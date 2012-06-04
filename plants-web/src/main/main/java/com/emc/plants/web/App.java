@@ -1,10 +1,10 @@
-package com.emc.plants;
+package com.emc.plants.service;
 
 /**
  * Hello world!
  *
  */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
