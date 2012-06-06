@@ -1,5 +1,9 @@
 package com.emc.plants.persistence;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -33,6 +37,19 @@ public class AppTest
      */
     public void testApp()
     {
-        assertTrue( true );
+    	EntityManagerFactory emf = 
+    			Persistence.createEntityManagerFactory("PBW");
+
+    		EntityManager entityManager = emf.createEntityManager();
+    		
+    		try	{
+    			Customer cust =  entityManager.find(Customer.class, "123456");
+    			System.out.println(cust.getFirstName());
+    		}finally	{
+    			if(entityManager != null)	{
+    				entityManager.close();
+    			}
+    				
+    		}
     }
 }

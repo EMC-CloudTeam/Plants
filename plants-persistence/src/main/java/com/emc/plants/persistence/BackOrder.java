@@ -8,8 +8,6 @@
 //
 package com.emc.plants.persistence;
 
-import com.emc.plants.utils.Util;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,11 +19,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import com.emc.plants.utils.Util;
 /**
  * Bean implementation class for Enterprise Bean: BackOrder
  */
-@Entity(name="BackOrder")
-@Table(name="BACKORDER", schema="APP")
+@Entity(name="BackOrder") 
+@Table(name="BACKORDER", schema="APP") 
 @NamedQueries({
 	@NamedQuery(
 		name="findAllBackOrders",

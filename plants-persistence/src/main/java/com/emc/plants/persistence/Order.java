@@ -64,9 +64,11 @@ public class Order
 	@ManyToOne
 	@JoinColumn(name="CUSTOMERID")
 	private Customer customer;
-	private Collection orderItems;
 	
-	private Collection items = null;
+	
+	//private Collection orderItems;
+	
+	//private Collection items = null;
 	
 	/**
 	 * Constructor to create an Order.
@@ -132,7 +134,7 @@ public class Order
 		this.setCcExpireYear(ccExpireYear);
 		this.setCardHolder(cardHolder);
 		this.setShippingMethod(shippingMethod);
-		this.items = items;
+		//this.items = items;
 		
 		// Get profit for total order.
 		OrderItem oi;
@@ -274,13 +276,13 @@ public class Order
 		this.customer = customer;
 	}
 	
-	public Collection getItems() {
+/*	public Collection getItems() {
 		return items;
 	}
 	
 	public void setItems(Collection items) {
 		this.items = items;
-	}
+	}*/
 	
 	public String getOrderID() {
 		return orderID;
@@ -289,14 +291,15 @@ public class Order
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
-	// TODO: whats the diff!! items != orderitems?
+	
+/*	// TODO: whats the diff!! items != orderitems?
 	public Collection getOrderItems() {
 		return orderItems;
 	}
 	
 	public void setOrderItems(Collection orderItems) {
 		this.orderItems = orderItems;
-	}
+	}*/
 	
 	public float getProfit() {
 		return profit;

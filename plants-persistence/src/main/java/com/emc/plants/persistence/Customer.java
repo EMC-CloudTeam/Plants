@@ -8,7 +8,6 @@
 //
 package com.emc.plants.persistence;
 
-//TODO : Remove comments
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -23,7 +22,6 @@ import javax.persistence.Table;
  * 
  * @see Customer
  */
-//TODO : Remove comments
 @Entity(name="Customer")
 @Table(name="CUSTOMER", schema="APP")
 @NamedQueries({

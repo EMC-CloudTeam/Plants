@@ -8,9 +8,6 @@
 //
 package com.emc.plants.persistence;
 
-import com.emc.plants.pojo.beans.StoreItem;
-import com.emc.plants.utils.Util;
-
 //import com.ibm.websphere.samples.plantsbywebsphereejb.BackOrderStock;
 //import com.ibm.websphere.samples.plantsbywebsphereejb.BackOrderStockHome;
 
@@ -20,6 +17,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import com.emc.plants.pojo.beans.StoreItem;
+import com.emc.plants.utils.Util;
 
 /**
  * Inventory is the implementation class for the {@link Inventory} entity

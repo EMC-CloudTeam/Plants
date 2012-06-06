@@ -101,7 +101,7 @@ public class Supplier {
      * @param url
      * @throws javax.ejb.CreateException
      */
-    public Supplier(String supplierID, String name, String street, String city, String state, String zip, String phone, String url) {
+    public Supplier(String supplierID, String name, String street, String city, String state, String zip, String phone, String url)  {
         this.setSupplierID(supplierID);
         this.setName(name);
         this.setStreet(street);
