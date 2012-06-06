@@ -25,5 +25,33 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    
+    <dependency>
+		<groupId>org.hibernate.javax.persistence</groupId>
+		<artifactId>hibernate-jpa-2.0-api</artifactId>
+		<version>1.0.1.Final</version>
+	</dependency>
+	<!-- JavaMail API -->
+	<dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+		<version>1.4.5</version>
+	</dependency>
+	<!-- Annotation API -->
+	<dependency>
+		<groupId>org.glassfish.main.javaee-api</groupId>
+		<artifactId>javax.annotation</artifactId>
+		<version>3.1.2</version>
+	</dependency>
+	
+	 <dependency>
+		<groupId>com.emc.plants.persistence</groupId>
+  		<artifactId>plants-persistence</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+	</dependency> 
+	
+
+	
+    
   </dependencies>
 </project>
