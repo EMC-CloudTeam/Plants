@@ -11,6 +11,8 @@
   <artifactId>plants-web</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
+  
+  
   <name>Plants Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -20,8 +22,40 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- For javax.xml.rpc -->
+    <dependency>
+	<groupId>org.glassfish.main.javaee-api</groupId>
+	<artifactId>javax.xml.rpc</artifactId>
+	<version>3.1.2</version>
+	</dependency>
+	<!-- Servlet API -->
+	<dependency>
+		<groupId>org.apache.tomcat</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>6.0.35</version>
+	</dependency>
+	
+	
+	<!-- Dependecy for plant services -->
+	<dependency>
+      <groupId>com.emc.plants.service</groupId>
+      <artifactId>plants-service</artifactId>
+      <version>1.0-SNAPSHOT</version>
+   	</dependency> 
+   	
+   	<dependency>
+		<groupId>com.emc.plants.persistence</groupId>
+  		<artifactId>plants-persistence</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+	</dependency> 
+
+    
   </dependencies>
   <build>
     <finalName>plants-web</finalName>
   </build>
+  <dependencyManagement>
+  	<dependencies>
+  	</dependencies>
+  </dependencyManagement>
 </project>
