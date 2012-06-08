@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.emc.plants.pojo.beans.CustomerInfo;
 import com.emc.plants.service.interfaces.Catalog;
 import com.emc.plants.service.interfaces.Login;
@@ -38,8 +40,10 @@ public class AccountServlet extends HttpServlet
    public static final String ACTION_SETLOGGING    = "SetLogging";
 
 //   @EJB(name="Login")
+   @Autowired
    private Login login;
 //   @EJB(name="Catalog")
+   @Autowired
    private Catalog catalog;
 
    /**
