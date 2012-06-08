@@ -14,6 +14,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Repository;
+
 import com.emc.plants.persistence.BackOrder;
 import com.emc.plants.persistence.Customer;
 import com.emc.plants.persistence.Inventory;
@@ -34,6 +36,7 @@ import com.emc.plants.utils.Util;
  * @see ShoppingCart
  */
 //@Stateful(name="ShoppingCart")
+@Repository
 public class ShoppingCartBean implements ShoppingCart
 {
 

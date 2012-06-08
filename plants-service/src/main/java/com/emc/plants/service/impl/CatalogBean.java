@@ -16,6 +16,8 @@ import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import com.emc.plants.persistence.Inventory;
 import com.emc.plants.pojo.beans.StoreItem;
 import com.emc.plants.service.interfaces.Catalog;
@@ -30,6 +32,7 @@ import com.emc.plants.utils.Util;
  * @see Catalog
  */
 @SuppressWarnings("unchecked")
+@Repository
 public class CatalogBean implements Catalog
 {
 	@PersistenceContext(unitName="PBW")

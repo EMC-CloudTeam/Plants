@@ -10,12 +10,12 @@ package com.emc.plants.service.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.annotation.security.RolesAllowed;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
 
 import com.emc.plants.persistence.BackOrder;
 import com.emc.plants.persistence.Inventory;
@@ -26,7 +26,8 @@ import com.emc.plants.utils.Util;
  * Bean implementation class for Enterprise Bean: BackOrderStock
  */
 //@Stateless (name="BackOrderStock")
-@RolesAllowed ("SampAdmin") 
+//@RolesAllowed ("SampAdmin")
+@Repository
 @SuppressWarnings("unchecked")
 public class BackOrderStockBean implements BackOrderStock
 {

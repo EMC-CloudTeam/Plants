@@ -5,10 +5,11 @@
 //All Rights Reserved * Licensed Materials - Property of IBM
 //
 package com.emc.plants.service.impl;
-import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
 
 import com.emc.plants.service.interfaces.ResetDB;
 import com.emc.plants.utils.Util;
@@ -16,7 +17,7 @@ import com.emc.plants.utils.Util;
  * Bean implementation class for Enterprise Bean: ResetDB
  */
 //@Stateless (name="ResetDB")
-@RolesAllowed ("SampAdmin") 
+@Repository
 //@TransactionManagement(value=BEAN) 	// TODO: TransactionManagement(value=BEAN) 
 public class ResetDBBean implements ResetDB {
    

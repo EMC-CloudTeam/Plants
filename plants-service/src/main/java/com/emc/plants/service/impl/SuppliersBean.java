@@ -14,6 +14,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import com.emc.plants.persistence.Supplier;
 import com.emc.plants.pojo.beans.SupplierInfo;
 import com.emc.plants.service.interfaces.Suppliers;
@@ -22,6 +24,7 @@ import com.emc.plants.utils.Util;
  * Bean implementation class for Enterprise Bean: Suppliers
  */
 //@Stateless(name="Suppliers")
+@Repository
 public class SuppliersBean implements Suppliers
 {
 
