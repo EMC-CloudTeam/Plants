@@ -17,6 +17,8 @@ import java.util.Vector;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.stereotype.Repository;
+
 import com.emc.plants.service.interfaces.ReportGenerator;
 import com.emc.plants.utils.Report;
 import com.emc.plants.utils.ReportFormat;
@@ -33,6 +35,7 @@ import com.emc.plants.utils.Util;
  * @see ReportGenerator
  */
 //@Stateless (name="ReportGenerator")
+@Repository
 public class ReportGeneratorBean implements ReportGenerator
 {
 	//ReportGenerator has not been updated to use PersistenceContext due to complex sql

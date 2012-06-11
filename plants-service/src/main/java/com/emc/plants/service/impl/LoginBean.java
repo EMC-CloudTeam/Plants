@@ -9,8 +9,12 @@
 package com.emc.plants.service.impl;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.emc.plants.persistence.Customer;
 import com.emc.plants.pojo.beans.CustomerInfo;
@@ -26,10 +30,21 @@ import com.emc.plants.utils.Util;
  * @see Login
  */
 //@Stateless (name="Login")
+@Repository
 public class LoginBean implements Login
 {
+	
+	private EntityManager em;
+	
+	
 	@PersistenceContext(unitName="PBW")
-	EntityManager em;
+	public void setEntityManager(EntityManager entityManager) {
+		this.em = entityManager;
+	}
+	
+	/*@Autowired
+	private EntityManagerFactory entityManagerFactory;*/
+	
 	
 	/**
 	 * Verify that the user exists and the password is value.
@@ -185,6 +200,10 @@ public class LoginBean implements Login
 	 */    
 	public CustomerInfo getCustomerInfo(String customerID)
 	{
+		
+		System.out.println(" Entity Manager :: "+em);
+		//EntityManager em = entityManagerFactory.createEntityManager();
+		
 		CustomerInfo customerInfo = null;
 		/*
 		 customerHome = (CustomerHome) Util.getEJBLocalHome("java:comp/env/ejb/Customer",

@@ -22,6 +22,8 @@ import javax.mail.internet.MimeMultipart;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Repository;
+
 import com.emc.plants.persistence.Order;
 import com.emc.plants.pojo.beans.CustomerInfo;
 import com.emc.plants.pojo.beans.EMailMessage;
@@ -38,6 +40,7 @@ import com.emc.plants.utils.Util;
  * @see Mailer
  */
 //@Stateless(name="Mailer")
+@Repository
 public class MailerBean implements Mailer
 {
 	//public static final String MAIL_SESSION = "java:comp/env/mail/PlantsByWebSphere";
