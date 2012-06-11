@@ -19,8 +19,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.emc.plants.pojo.beans.CustomerInfo;
+import com.emc.plants.service.impl.LoginBean;
 import com.emc.plants.service.interfaces.Catalog;
 import com.emc.plants.service.interfaces.Login;
 import com.emc.plants.utils.Util;
@@ -51,7 +54,9 @@ public class AccountServlet extends HttpServlet
     */
    public void init(ServletConfig config) throws ServletException
    {
+	   login = (LoginBean)getBean();
       super.init(config);
+      Util.setDebug(true);
    }
 
    /**
@@ -185,12 +190,14 @@ public class AccountServlet extends HttpServlet
          }
          catch (ServletException e)
          {
+        	 e.printStackTrace();
             req.setAttribute(Util.ATTR_RESULTS, "/nException occurred");
             throw e;
          }
          catch (Exception e)
          {
             req.setAttribute(Util.ATTR_RESULTS, "/nException occurred");
+            e.printStackTrace();
             throw new ServletException(e.getMessage());
          }
       }
@@ -409,6 +416,13 @@ public class AccountServlet extends HttpServlet
            String page)
            throws ServletException, IOException {
            resp.setContentType("text/html");
-           ctx.getRequestDispatcher(page).include(req, resp);
+           ctx.getRequestDispatcher("/login.jsp").include(req, resp);
+   }
+   
+   private Object getBean(){
+	   ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml","persistence-context.xml");
+	   LoginBean loginBean = context.getBean(LoginBean.class);
+	   return loginBean;
+	   
    }
 }
