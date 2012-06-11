@@ -1,8 +1,3 @@
-desc inventory;
-
-
-select * from inventory;
-
 insert into inventory(inventoryid, name, heading, description, pkginfo, image, price, cost, category,
   quantity, notes, ispublic, minthreshold, maxthreshold)
   values( 'F0013','Primrose','Means: I Cannot Live Without You','(Primula). Large fragrant blooms in wide-eyed spring
@@ -264,3 +259,27 @@ insert into inventory(inventoryid, name, heading, description, pkginfo, image, p
   values('V0007','Watermelon','Seedless Summer' ,'Plant our seeds indoors in late winter and transfer outside after
 threat of frost recedes, our seeds will produce huge$ round$ ripe melons by mid-June. Guaranteed not to contain
 active Acidophilous cultures.','1 pkt. (100 seeds)','veggies_watermelon.jpg',2.00,.50,50,1,'NOTES and stuff',true, 0, 0);
+
+
+
+========================================================================
+/* INSERT STATEMENT for Supplier Table*/
+
+insert into supplier values('Supplier001','Greenhouse By WebSphere','4205 Miami Blvd.','Durham','NC','27709','919-555-1212',
+  'http://localhost:9080/OrderProcessorEJB/services/FrontGate?wsdl');
+  
+  
+======================================================================
+
+/* INSERT statements for backorder table*/
+insert into backorder values('V0007', '150', 200, 'Pending',123456789, 123456789,'');
+
+==========================================================================
+/* INSERT statement for customer table*/
+
+insert into customer values('plants@plantsbywebsphere.ibm.com', 'plants', 'David', 'Grover', '123 Main Street','Apt. C', 'Raleigh','NC', '27604','919-555-1234');
+================================================================================
+
+
+  
+  
