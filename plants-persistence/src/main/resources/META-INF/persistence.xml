@@ -20,11 +20,12 @@
 		<class>com.emc.plants.persistence.Supplier</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
+		<!-- 
         <properties>
-            <!--
+            
             <property name="hibernate.ejb.cfgfile" value="/hibernate.cfg.xml"/>
             <property name="hibernate.hbm2ddl.auto" value="create"/>
-            -->
+          
             <property name="hibernate.archive.autodetection" value="class, hbm"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
@@ -40,6 +41,6 @@
             
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
             
-        </properties>
+        </properties>  -->
     </persistence-unit>
 </persistence>
