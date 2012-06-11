@@ -74,6 +74,12 @@ insert into inventory(inventoryid, name, heading, description, pkginfo, image, p
   across. Blooms start June through August$ depending on variety and have a subtle fragrance. Tolerates dry soil
   but it is wise to water deeply during periods of dry weather.','4 bulbs','flower_lily.jpg',6.50,3.25,100,1,
   'NOTES and stuff',true, 0, 0);
+  
+  insert into inventory(inventoryid, name, heading, description, pkginfo, image, price, cost, category,  quantity, notes, ispublic, minthreshold, maxthreshold) values('F0011','Pansy','Autumn Mix','(Viola tricolor). Reminiscent of the colors of fall.  Our Pansies will bloom from fall to early winter, and again in the spring! They prefer part shade to full sun. Height 6 to 8 inches.','1 pkt. (25 seeds)','flower_pansies.jpg',2.00,1.25,100,0,'NOTES and stuff',true,0,0);
+  
+  insert into inventory(inventoryid, name, heading, description, pkginfo, image, price, cost, category,  quantity, notes, ispublic, minthreshold, maxthreshold) values('F0021','Petunia','Striped Brightness','(Petunia x hybrida). Striking, large magenta flowers with contrasting white trumpet stripes. Excellent for borders, window boxes, planters and bouquets.  Petunias do best in full sun but will tolerate light shade. Height: 1 foot.','1 pkt. (50 seeds)',flower_petunias.jpg',3.00,1.25,100,0,'NOTES and stuff',true,0,0);
+  
+insert into inventory(inventoryid, name, heading, description, pkginfo, image, price, cost, category,  quantity, notes, ispublic, minthreshold, maxthreshold) values('F0013','Primrose','Means: I Cannot Live Without You','(Primula). Large, fragrant blooms in wide-eyed spring like yellow. Plants thrive despite heat and drought and require good drainage. Height: 12 inches.','6 plants','flower_primrose.jpg',10.00,4.75,100,0,'NOTES and stuff',true,0,0);
 
 insert into inventory(inventoryid, name, heading, description, pkginfo, image, price, cost, category,
   quantity, notes, ispublic, minthreshold, maxthreshold) values('F0014','Red Poinsettia','Seasonal Beauty','(Euphorbia pulcherrima). Lush red flowers float atop deep green leaves.
@@ -280,6 +286,8 @@ insert into backorder values('V0007', '150', 200, 'Pending',123456789, 123456789
 insert into customer values('plants@plantsbywebsphere.ibm.com', 'plants', 'David', 'Grover', '123 Main Street','Apt. C', 'Raleigh','NC', '27604','919-555-1234');
 ================================================================================
 
+/* INSERT statements for idgenerator table*/
+  
+insert into idgenerator values('BACKORDER', 1)
+insert into idgenerator values('ORDER', 2)
 
-  
-  
