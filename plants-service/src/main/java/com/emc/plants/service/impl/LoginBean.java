@@ -30,21 +30,23 @@ import com.emc.plants.utils.Util;
  * @see Login
  */
 //@Stateless (name="Login")
-@Repository
+@Repository("login")
 public class LoginBean implements Login
 {
+	@Autowired
+	private EntityManagerFactory entityManagerFactory;
 	
-	private EntityManager em;
 	
-	
-	@PersistenceContext(unitName="PBW")
-	public void setEntityManager(EntityManager entityManager) {
-		this.em = entityManager;
+
+	public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+		this.entityManagerFactory =entityManagerFactory;
 	}
 	
-	/*@Autowired
-	private EntityManagerFactory entityManagerFactory;*/
+
 	
+
+
+
 	
 	/**
 	 * Verify that the user exists and the password is value.
@@ -72,6 +74,7 @@ public class LoginBean implements Login
 		 }
 		 catch (FinderException e) { e.printStackTrace(); }
 		 */
+        EntityManager em = entityManagerFactory.createEntityManager();
 		customer = em.find(Customer.class, customerID);
 		
 		// Does customer exists?
@@ -140,6 +143,7 @@ public class LoginBean implements Login
 		   */
 		Customer c = new Customer(customerID, password, firstName, lastName, addr1, addr2,
 				addrCity, addrState, addrZip, phone);
+        EntityManager em = entityManagerFactory.createEntityManager();
 		em.persist(c);
 		em.flush();
 		customerInfo = new CustomerInfo(c);
@@ -174,6 +178,7 @@ public class LoginBean implements Login
 		 customer.update(firstName, lastName, addr1, addr2, addrCity, addrState, addrZip, phone);
 		 customerInfo = new CustomerInfo(customer);
 		 */
+        EntityManager em = entityManagerFactory.createEntityManager();
 		Customer c = em.find(Customer.class, customerID);
 		em.lock(c, LockModeType.WRITE);
 		em.refresh(c);
@@ -201,7 +206,7 @@ public class LoginBean implements Login
 	public CustomerInfo getCustomerInfo(String customerID)
 	{
 		
-		System.out.println(" Entity Manager :: "+em);
+
 		//EntityManager em = entityManagerFactory.createEntityManager();
 		
 		CustomerInfo customerInfo = null;
@@ -212,6 +217,8 @@ public class LoginBean implements Login
 		 Customer customer = customerHome.findByPrimaryKey(new CustomerKey(customerID));
 		 customerInfo = new CustomerInfo(customer);
 		 */
+        EntityManager em = entityManagerFactory.createEntityManager();
+        System.out.println(" Entity Manager :: "+em);
 		Customer c = em.find(Customer.class, customerID);
 		customerInfo = new CustomerInfo(c);
 		return customerInfo;
