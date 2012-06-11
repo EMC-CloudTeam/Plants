@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<!-- 
+"This sample program is provided AS IS and may be used, executed, copied and modified without royalty payment by customer (a) for its own 
+instruction and study, (b) in order to develop applications designed to run with an IBM WebSphere product, either for customer's own internal use 
+or for redistribution by customer, as part of such an application, in customer's own products."
+
+Product 5630-A36,  (C) COPYRIGHT International Business Machines Corp., 2001, 2002
+All Rights Reserved * Licensed Materials - Property of IBM
+--> 
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Plants by WebSphere</title>
+
+
+<SCRIPT LANGUAGE="Javascript" >
+<!--//
+	if (document.images) {
+	menu1s = new Image();
+	menu1s.src = "images/tab_flowers_s.gif";
+	menu2s = new Image();
+	menu2s.src = "images/tab_veggies_s.gif";
+	menu3s = new Image();
+	menu3s.src = "images/tab_trees_s.gif";
+	menu4s = new Image();
+	menu4s.src = "images/tab_accessories_s.gif";
+
+	menu1u = new Image();
+	menu1u.src = "images/tab_flowers_u.gif";
+	menu2u = new Image();
+	menu2u.src = "images/tab_veggies_u.gif";
+	menu3u = new Image();
+	menu3u.src = "images/tab_trees_u.gif";
+	menu4u = new Image();
+	menu4u.src = "images/tab_accessories_u.gif";
+
+	}
+
+	function selectMenu (imgName) {
+		if (top.banner.document.images) {
+			top.banner.document[imgName].src = eval(imgName + "s.src");
+		}
+	}
+	
+	function deselectMenu (imgName) {
+		if (top.banner.document.images) {
+			top.banner.document[imgName].src = eval(imgName + "u.src");
+		}
+	}
+	//-->
+ </SCRIPT>
+
+</head>
+
+
+<frameset rows="89,*" border="0" frameborder="no" framespacing="0">
+  <frame src="banner.html" title="banner" frameborder="0" scrolling="no"
+   marginheight="0" marginwidth="0" name="banner">
+
+  <frame src="promo.html" title="promo" frameborder="0" scrolling="yes"
+   marginheight="0" marginwidth="0" name="work">
+
+</frameset>
+
+<body bgcolor="#000000"></body>
+</html>
