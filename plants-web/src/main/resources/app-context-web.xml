@@ -27,7 +27,7 @@
            base-package="com.emc.plants.service.impl"
            scope-resolver="org.springframework.context.annotation.Jsr330ScopeMetadataResolver">
        <context:include-filter type="annotation" expression="javax.ejb.Stateless"/>
-   </context:component-scan> -->
+   </context:component-scan>
 
     <bean id="myJdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -51,5 +51,5 @@
         <property name="dataSource" ref="myJdbcDataSource"/>
     </bean>
 
-		
+	 -->
 </beans>
