@@ -7,6 +7,9 @@
 // All Rights Reserved * Licensed Materials - Property of IBM
 //
 package com.emc.plants.utils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.io.FileNotFoundException;
 import java.text.NumberFormat;
 import java.util.StringTokenizer;
@@ -80,6 +83,7 @@ public class Util {
     private static final String[] SHIPPING_METHOD_TIMES = { "( 3 to 6 business days )", "( 2 to 3 business days )", "( 1 to 2 business days )" };
     private static final float[] SHIPPING_METHOD_PRICES = { 4.99f, 8.99f, 12.99f };
     public static final String ZERO_14 = "00000000000000";
+    private static ApplicationContext context = null;
     /**
      * Return the cached Initial Context.
      *
@@ -137,6 +141,14 @@ public class Util {
                 debug("Util.getEJBLocalHome(): Exception: " + e);
             }
         return session;
+    }
+
+
+    public static Object getSpringBean(String name){
+        if(context==null){
+            ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml","persistence-context.xml");
+        }
+        return context.getBean(name);
     }
 
     /**
