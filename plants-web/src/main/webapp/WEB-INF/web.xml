@@ -62,10 +62,12 @@
 	<servlet id="Servlet_4">
 		<servlet-name>AdminServlet</servlet-name>
 		<servlet-class>com.emc.plants.web.servlets.AdminServlet</servlet-class>
+		<!-- 
 		<security-role-ref>
 			<role-name>SampAdmin</role-name>
 			<role-link>SampAdmin</role-link>
 		</security-role-ref>
+		 -->
 	</servlet>
 	<servlet-mapping id="ServletMapping_1">
 		<servlet-name>AccountServlet</servlet-name>
@@ -94,6 +96,7 @@
 		<error-code>500</error-code>
 		<location>/error.jsp</location>
 	</error-page>
+	<!-- 
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>SampAdmin</web-resource-name>
@@ -127,6 +130,7 @@
 			<transport-guarantee>NONE</transport-guarantee>
 		</user-data-constraint>
 	</security-constraint>
+	 -->
 	<login-config>
 		<auth-method>BASIC</auth-method>
 		<realm-name>Default</realm-name>
