@@ -15,7 +15,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.emc.plants.persistence.Inventory;
@@ -32,11 +35,12 @@ import com.emc.plants.utils.Util;
  * @see Catalog
  */
 @SuppressWarnings("unchecked")
-@Repository
+@Repository("catalog")
 public class CatalogBean implements Catalog
 {
-	@PersistenceContext(unitName="PBW")
-	EntityManager em;
+    @Autowired
+	EntityManagerFactory entityManagerFactory ;
+
 	
 	/**
 	 * Get all inventory items.
@@ -77,6 +81,7 @@ public class CatalogBean implements Catalog
 		 items.addElement( new ShoppingCartItem(inv) );
 		 }
 		 */
+        EntityManager em = entityManagerFactory.createEntityManager();
 		Query q = em.createNamedQuery("getItemsByCategory");
 		q.setParameter("category", category);
 		//The return type must be Vector because the PBW client ActiveX sample requires Vector
@@ -105,7 +110,7 @@ public class CatalogBean implements Catalog
 		 items.addElement( new ShoppingCartItem(inv) );
 		 }
 		 */
-		
+        EntityManager em = entityManagerFactory.createEntityManager();
 		Query q = em.createNamedQuery("getItemsLikeName");
 		q.setParameter("name", '%' + name + '%');
 		//The return type must be Vector because the PBW client ActiveX sample requires Vector
@@ -138,6 +143,7 @@ public class CatalogBean implements Catalog
 		 Inventory inv = invHome.findByPrimaryKey(new InventoryKey(inventoryID));
 		 si = new ShoppingCartItem(inv);
 		 */
+        EntityManager em = entityManagerFactory.createEntityManager();
 		si = em.find(Inventory.class, inventoryID);
 		return si;
 	}
@@ -160,7 +166,7 @@ public class CatalogBean implements Catalog
 		  if (inv != null)
 		  retval = true;
 		  */
-		
+        EntityManager em = entityManagerFactory.createEntityManager();
 		em.persist(item);
 		return retval;
 	}
@@ -192,6 +198,7 @@ public class CatalogBean implements Catalog
 		 inv.remove();
 		 retval = true;
 		 */
+        EntityManager em = entityManagerFactory.createEntityManager();
 		em.remove(em.find(Inventory.class, inventoryID));
 		return retval;
 	}
@@ -401,6 +408,7 @@ public class CatalogBean implements Catalog
 	 */
 	private Inventory getInv(String inventoryID)
 	{
+        EntityManager em = entityManagerFactory.createEntityManager();
 		return em.find(Inventory.class, inventoryID);
 	}
 	
@@ -419,6 +427,7 @@ public class CatalogBean implements Catalog
 		 inv = invHome.findByPrimaryKeyUpdate(inventoryID);
 		 */
 		// TODO: lowp: eventually replace with find for update hint
+        EntityManager em = entityManagerFactory.createEntityManager();
 		inv = em.find(Inventory.class, inventoryID);
 		em.lock(inv, LockModeType.WRITE);
 		em.refresh(inv);
