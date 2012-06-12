@@ -28,10 +28,7 @@
         </property>
     </bean>
     
-     <bean id="testClass" 
-          class="com.emc.plants.persistence.AppTest">
-        <property name="emf" ref="entityManagerFactory"/>
-    </bean>
+
     
     <bean id="myJdbcDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
       destroy-method="close">
