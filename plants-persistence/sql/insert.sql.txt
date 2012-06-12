@@ -268,26 +268,26 @@ active Acidophilous cultures.','1 pkt. (100 seeds)','veggies_watermelon.jpg',2.0
 
 
 
-========================================================================
+
 /* INSERT STATEMENT for Supplier Table*/
 
 insert into supplier values('Supplier001','Greenhouse By WebSphere','4205 Miami Blvd.','Durham','NC','27709','919-555-1212',
   'http://localhost:9080/OrderProcessorEJB/services/FrontGate?wsdl');
   
   
-======================================================================
+
 
 /* INSERT statements for backorder table*/
 insert into backorder values('V0007', '150', 200, 'Pending',123456789, 123456789,'');
 
-==========================================================================
+
 /* INSERT statement for customer table*/
 
 insert into customer values('plants@plantsbywebsphere.ibm.com', 'plants', 'David', 'Grover', '123 Main Street','Apt. C', 'Raleigh','NC', '27604','919-555-1234');
-================================================================================
+
 
 /* INSERT statements for idgenerator table*/
   
-insert into idgenerator values('BACKORDER', 1)
-insert into idgenerator values('ORDER', 2)
+insert into idgenerator values('BACKORDER', 1);
+insert into idgenerator values('ORDER', 2);
 
