@@ -44,7 +44,7 @@ import com.emc.plants.utils.Util;
 public class MailerBean implements Mailer
 {
 	//public static final String MAIL_SESSION = "java:comp/env/mail/PlantsByWebSphere";
-	@Resource(name="mail/PlantsByWebSphere")
+	//@Resource(name="mail/PlantsByWebSphere")
 	Session mailSession;
 
 	@PersistenceContext(unitName="PBW")
