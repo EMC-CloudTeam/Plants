@@ -17,7 +17,7 @@ import com.emc.plants.utils.Util;
  * Bean implementation class for Enterprise Bean: ResetDB
  */
 //@Stateless (name="ResetDB")
-@Repository
+@Repository("resetDBBean")
 //@TransactionManagement(value=BEAN) 	// TODO: TransactionManagement(value=BEAN) 
 public class ResetDBBean implements ResetDB {
    

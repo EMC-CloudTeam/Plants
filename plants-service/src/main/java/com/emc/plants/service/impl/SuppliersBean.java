@@ -24,7 +24,7 @@ import com.emc.plants.utils.Util;
  * Bean implementation class for Enterprise Bean: Suppliers
  */
 //@Stateless(name="Suppliers")
-@Repository
+@Repository("suppliersBean")
 public class SuppliersBean implements Suppliers
 {
 
