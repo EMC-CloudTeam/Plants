@@ -18,12 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+i
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.emc.plants.pojo.beans.CustomerInfo;
-import com.emc.plants.service.impl.LoginBean;
 import com.emc.plants.service.interfaces.Catalog;
 import com.emc.plants.service.interfaces.Login;
 import com.emc.plants.utils.Util;
@@ -54,7 +54,8 @@ public class AccountServlet extends HttpServlet
     */
    public void init(ServletConfig config) throws ServletException
    {
-	   login = (LoginBean)getBean();
+	   this.login = (Login)Util.getSpringBean("login");
+       this.catalog = (Catalog)Util.getSpringBean("catalog");
       super.init(config);
       Util.setDebug(true);
    }
@@ -419,10 +420,5 @@ public class AccountServlet extends HttpServlet
            ctx.getRequestDispatcher("/login.jsp").include(req, resp);
    }
    
-   private Object getBean(){
-	   ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml","persistence-context.xml");
-	   LoginBean loginBean = context.getBean(LoginBean.class);
-	   return loginBean;
-	   
-   }
+
 }
