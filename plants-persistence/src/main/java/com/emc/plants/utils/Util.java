@@ -146,7 +146,7 @@ public class Util {
 
     public static Object getSpringBean(String name){
         if(context==null){
-            ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml","persistence-context.xml");
+            ApplicationContext context = new ClassPathXmlApplicationContext("app-context-web.xml","persistence-context.xml");
         }
         return context.getBean(name);
     }
