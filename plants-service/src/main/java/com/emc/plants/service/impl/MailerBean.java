@@ -62,7 +62,7 @@ public class MailerBean implements Mailer
 	 * @param orderKey The order number.
 	 * @return The email message.
 	 */
-	private String createMessage(String orderKey) 
+	private String createMessage(long orderKey) 
 	{
 		Util.debug("creating email message for order:"+orderKey);
 		StringBuffer msg = new StringBuffer();
@@ -90,7 +90,7 @@ public class MailerBean implements Mailer
 	 * @param orderKey The order number.
 	 * @return The Order number string.
 	 */
-	private String createSubjectLine(String orderKey) 
+	private String createSubjectLine(long orderKey) 
 	{
 		StringBuffer msg = new StringBuffer();
 		msg.append("Your order number " + orderKey);
@@ -105,7 +105,7 @@ public class MailerBean implements Mailer
 	 * @param orderKey
 	 * @throws MailerAppException
 	 */
-	public void createAndSendMail(CustomerInfo customerInfo, String orderKey) throws MailerAppException 
+	public void createAndSendMail(CustomerInfo customerInfo, long orderKey) throws MailerAppException 
 	{
 		try 
 		{
