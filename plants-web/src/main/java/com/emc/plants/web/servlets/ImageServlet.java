@@ -13,6 +13,8 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.emc.plants.service.interfaces.Catalog;
 import com.emc.plants.utils.Util;
 
@@ -29,6 +31,7 @@ public class ImageServlet extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	
 //	@EJB(beanName="Catalog")
+	@Autowired
 	private Catalog catalog;
 
    /**
@@ -36,7 +39,9 @@ public class ImageServlet extends HttpServlet
     */
    public void init(ServletConfig config) throws ServletException
    {
-      super.init(config);      
+      super.init(config);
+      this.catalog = (Catalog)Util.getSpringBean("catalog");
+      Util.setDebug(true);
    }
 
    /**
@@ -108,6 +113,6 @@ public class ImageServlet extends HttpServlet
            HttpServletResponse resp, 
            String page)
            throws ServletException, IOException {
-           ctx.getRequestDispatcher(page).include(req, resp);
+           ctx.getRequestDispatcher("/"+page).include(req, resp);
    }
 }

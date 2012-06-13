@@ -20,8 +20,10 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.emc.plants.persistence.Order;
@@ -40,15 +42,19 @@ import com.emc.plants.utils.Util;
  * @see Mailer
  */
 //@Stateless(name="Mailer")
-@Repository
+@Repository("mailer")
 public class MailerBean implements Mailer
 {
 	//public static final String MAIL_SESSION = "java:comp/env/mail/PlantsByWebSphere";
 	//@Resource(name="mail/PlantsByWebSphere")
 	Session mailSession;
 
-	@PersistenceContext(unitName="PBW")
-	EntityManager em;
+	@Autowired
+	private EntityManagerFactory entityManagerFactory;
+	
+	public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+		this.entityManagerFactory =entityManagerFactory;
+	}
 	
 	/**
 	 * Create the email message.
@@ -65,6 +71,7 @@ public class MailerBean implements Mailer
 		 OrderHome.class);
 		 Order order = orderHome.findByPrimaryKey(new OrderKey(orderKey));
 		 */
+		EntityManager em = entityManagerFactory.createEntityManager();
 		Order order = em.find(Order.class, orderKey);
 		msg.append("Thank you for your order " + orderKey + ".\n");
 		msg.append("Your order will be shipped to: " + order.getShipName() + "\n");

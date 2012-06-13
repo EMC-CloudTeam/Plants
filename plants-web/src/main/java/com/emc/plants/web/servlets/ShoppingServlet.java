@@ -12,7 +12,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
-import java.util.Iterator;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -21,6 +20,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.emc.plants.persistence.Inventory;
 import com.emc.plants.pojo.beans.CustomerInfo;
@@ -32,6 +33,7 @@ import com.emc.plants.service.interfaces.Catalog;
 import com.emc.plants.service.interfaces.Mailer;
 import com.emc.plants.service.interfaces.ShoppingCart;
 import com.emc.plants.utils.Util;
+import com.emc.plants.web.util.WebUtil;
 
 /**
  * Servlet to handle shopping needs.
@@ -54,15 +56,21 @@ public class ShoppingServlet extends HttpServlet
 	public static final String ACTION_UPDATEQUANTITY = "updatequantity";
 
 //	@EJB(beanName="Catalog")
+	@Autowired
 	Catalog catalog;
 
 //	@EJB(name="Mailer")
+	@Autowired
 	private Mailer mailer;
 
 	//@EJB(beanName="ShoppingCart")
 	public void init(ServletConfig config) throws ServletException
 	{
 		super.init(config);
+		this.catalog = (Catalog)WebUtil.getSpringBean(this.getServletContext(), "catalog");
+		this.mailer = (Mailer)WebUtil.getSpringBean(this.getServletContext(), "mailer");
+		
+		Util.setDebug(true);
 //		shoppingCartHome = (ShoppingCartHome) Util.getEJBHome("java:comp/env/ejb/ShoppingCart", com.ibm.websphere.samples.pbwejb.ShoppingCartHome.class);
 //		catalogHome = (CatalogHome) Util.getEJBHome("java:comp/env/ejb/Catalog", com.ibm.websphere.samples.pbwejb.CatalogHome.class);
 	}
@@ -157,7 +165,7 @@ public class ShoppingServlet extends HttpServlet
 				{
 					Util.debug("gotocart: shopping cart ref must have timed out");
 					ShoppingCartContents cartContents = (ShoppingCartContents) session.getAttribute(Util.ATTR_CART_CONTENTS);
-					shoppingCart = (ShoppingCart) Util.getBean("java:comp/env/ejb/ShoppingCart");
+					shoppingCart = (ShoppingCart) WebUtil.getSpringBean(this.getServletContext(), "shopping");
 					session.setAttribute(Util.ATTR_CART, shoppingCart);
 				}
 			}
@@ -172,7 +180,7 @@ public class ShoppingServlet extends HttpServlet
 			if (shoppingCart == null)
 			{
 				Util.debug("shopping cart is NULL, must create it");
-				shoppingCart = (ShoppingCart) Util.getBean("java:comp/env/ejb/ShoppingCart");
+				shoppingCart = (ShoppingCart) WebUtil.getSpringBean(this.getServletContext(), "shopping");
 			}
 			else
 			{
@@ -188,7 +196,7 @@ public class ShoppingServlet extends HttpServlet
 					// ShoppingCart timed out, so create a new one.
 					Util.debug("addtocart: shopping cart ref must have timed out, create a new one");
 					ShoppingCartContents cartContents = (ShoppingCartContents) session.getAttribute(Util.ATTR_CART_CONTENTS);
-					shoppingCart = (ShoppingCart) Util.getBean("java:comp/env/ejb/ShoppingCart");
+					shoppingCart = (ShoppingCart) WebUtil.getSpringBean(this.getServletContext(), "shopping");
 					if (cartContents != null) {
 						shoppingCart.setCartContents(cartContents);
 					}
@@ -225,7 +233,7 @@ public class ShoppingServlet extends HttpServlet
 				// ShoppingCart timed out, so create a new one.
 				Util.debug("updatequantity: shopping cart ref must have timed out, create a new one");
 				ShoppingCartContents cartContents = (ShoppingCartContents) session.getAttribute(Util.ATTR_CART_CONTENTS);
-				shoppingCart = (ShoppingCart) Util.getBean("java:comp/env/ejb/ShoppingCart");
+				shoppingCart = (ShoppingCart) WebUtil.getSpringBean(this.getServletContext(), "shopping");
 				if (cartContents != null) {
 					shoppingCart.setCartContents(cartContents);
 				}
@@ -334,7 +342,7 @@ public class ShoppingServlet extends HttpServlet
 				ShoppingCartContents cartContents = (ShoppingCartContents) session.getAttribute(Util.ATTR_CART_CONTENTS);
 				if (cartContents != null)
 				{
-					shoppingCart = (ShoppingCart) Util.getBean("java:comp/env/ejb/ShoppingCart");
+					shoppingCart = (ShoppingCart) WebUtil.getSpringBean(this.getServletContext(), "shopping");
 					shoppingCart.setCartContents(cartContents);
 				}
 				else
@@ -404,7 +412,7 @@ public class ShoppingServlet extends HttpServlet
 				ShoppingCartContents cartContents = (ShoppingCartContents) session.getAttribute(Util.ATTR_CART_CONTENTS);
 				if (cartContents != null)
 				{
-					shoppingCart = (ShoppingCart) Util.getBean("java:comp/env/ejb/ShoppingCart");
+					shoppingCart = (ShoppingCart) WebUtil.getSpringBean(this.getServletContext(), "shopping");
 					shoppingCart.setCartContents(cartContents);
 				}
 				else
@@ -461,6 +469,6 @@ public class ShoppingServlet extends HttpServlet
 	private void requestDispatch(ServletContext ctx, HttpServletRequest req, HttpServletResponse resp, String page) throws ServletException, IOException
 	{
 		resp.setContentType("text/html");
-		ctx.getRequestDispatcher(page).forward(req, resp);
+		ctx.getRequestDispatcher("/"+page).forward(req, resp);
 	}
 }
