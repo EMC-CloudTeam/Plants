@@ -186,7 +186,7 @@ public class LoginBean implements Login
 		 customerInfo = new CustomerInfo(customer);
 		 */
         EntityManager em = entityManagerFactory.createEntityManager();
-
+        em.getTransaction().begin();
 		Customer c = em.find(Customer.class, customerID);
 		em.lock(c, LockModeType.WRITE);
 		em.refresh(c);
@@ -201,7 +201,7 @@ public class LoginBean implements Login
 		c.setPhone(phone);
 		
 		customerInfo = new CustomerInfo(c);
-		
+		em.getTransaction().commit();
 		return customerInfo;
 	}
 	
