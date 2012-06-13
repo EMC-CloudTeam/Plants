@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.emc.plants.persistence.Supplier;
 import com.emc.plants.pojo.beans.SupplierInfo;
@@ -74,6 +75,7 @@ public class SuppliersBean implements Suppliers
 	 * @param url
 	 * @return supplierInfo
 	 */
+	@Transactional
 	public SupplierInfo updateSupplier(String supplierID, String name, String street, String city, String state, String zip, String phone, String url) {
 		SupplierInfo supplierInfo = null;
 		try {
@@ -93,6 +95,8 @@ public class SuppliersBean implements Suppliers
 				supplier.setPhone(phone);
 				supplier.setUrl(url);
 				supplierInfo = new SupplierInfo(supplier);
+				em.persist(supplier);
+				em.flush();
 			} else { // catch (FinderException e) {
 				Util.debug("SuppliersBean.updateSupplier() - supplier doesn't exist.");
 				Util.debug("SuppliersBean.updateSupplier() - Couldn't update Supplier for SupplierID: " + supplierID);
