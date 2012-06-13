@@ -41,14 +41,14 @@ public class OrderItem
 	@Embeddable
 	public static class PK implements java.io.Serializable {
 		static final long serialVersionUID = 3206093459760846163L;
-		@Column(name="inventoryID")
+		@Column(name="INVENTORYID")
 		public String inventoryID;
 		@Column(name="ORDER_ORDERID")
-		public String order_orderID;
+		public long order_orderID;
 		
 		public PK() {  Util.debug("OrderItem.PK()"); }			
 		
-		public PK(String inventoryID,	String argOrder) {
+		public PK(String inventoryID,	long argOrder) {
 			Util.debug("OrderItem.PK() inventoryID=" + inventoryID + "=");
 			Util.debug("OrderItem.PK() orderID=" + argOrder + "=");
 			this.inventoryID = inventoryID;
@@ -63,7 +63,7 @@ public class OrderItem
 				PK o = (PK) otherKey;
 				return (
 						(this.inventoryID.equals(o.inventoryID))
-						&& (this.order_orderID.equals(o.order_orderID)));
+						&& (this.order_orderID == o.order_orderID));
 			}
 			return false;
 		}
@@ -74,7 +74,7 @@ public class OrderItem
 			Util.debug("OrderItem.PK.hashCode() inventoryID=" + inventoryID + "=");
 			Util.debug("OrderItem.PK.hashCode() orderID=" + order_orderID + "=");
 			
-			return (inventoryID.hashCode() + order_orderID.hashCode());
+			return (inventoryID.hashCode() + (int)order_orderID);
 		}
 	}
 	
@@ -88,10 +88,10 @@ public class OrderItem
 	private int category;
 	private int quantity;
 	private String sellDate;
-	private String inventoryId;
+	//private String inventoryId;
 	
 	@ManyToOne
-	@JoinColumn(name="INVENTORYID")
+	@JoinColumn(name="INVENTORYID" , insertable=false , updatable=false)
 	private Inventory inventory;
 	@ManyToOne
 	@JoinColumn(name="ORDER_ORDERID" , insertable=false , updatable=false)
@@ -142,7 +142,7 @@ public class OrderItem
 	public OrderItem() {} 
 	public OrderItem(Inventory inv) {
 		Util.debug("OrderItem(inv) - id = "+inv.getInventoryId());
-		setInventoryId(inv.getInventoryId());
+		//setInventoryId(inv.getInventoryId());
 		inventory = inv;
 		name = inv.getName();
 		pkginfo = inv.getPkginfo();
@@ -159,7 +159,7 @@ public class OrderItem
 	{
 		Util.debug("OrderItem(etc.)");		
 		inventory = inv;
-		setInventoryId(inv.getInventoryId());
+		//setInventoryId(inv.getInventoryId());
 		setName(name);
 		setPkginfo(pkginfo);
 		setPrice(price);
@@ -174,7 +174,7 @@ public class OrderItem
 	/*
 	 * updates the primary key field with the composite orderId+inventoryId
 	 */
-	public void updatePK(){
+	public void updatePK(String inventoryId){
 		id=new OrderItem.PK(inventoryId,order.getOrderID());
 	}
 
@@ -196,11 +196,12 @@ public class OrderItem
 		this.order = order;
 		this.sellDate=order.getSellDate();		
 	}
-	public String getInventoryId() {
+	
+	/*public String getInventoryId() {
 		return inventoryId;
 	}
 	public void setInventoryId(String inventoryId) {
 		this.inventoryId = inventoryId;
-	}
+	}*/
 
 } 
