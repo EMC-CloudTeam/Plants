@@ -59,8 +59,14 @@ public class AdminServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         // Uncomment the following to generated debug code.
-        // Util.setDebug(true);
-
+         Util.setDebug(true);
+         
+         this.suppliers = (Suppliers) Util.getSpringBean("suppliersBean");
+         this.login = (Login) Util.getSpringBean("login");
+         this.backOrderStock = (BackOrderStock) Util.getSpringBean("backOrderStockBean");
+         this.catalog = (Catalog) Util.getSpringBean("catalog");
+         this.resetDB = (ResetDB) Util.getSpringBean("resetDBBean");
+        
     }
     /**
      * Process incoming HTTP GET requests
@@ -160,7 +166,7 @@ public class AdminServlet extends HttpServlet {
             }
         } else {
             // Unknown Supplier Config Admin Action so go back to the Administration home page
-            sendRedirect(resp, "/PlantsByWebSphere/" + Util.PAGE_ADMINHOME);
+            sendRedirect(resp, "/plants-web/" + Util.PAGE_ADMINHOME);
         }
         session.setAttribute(Util.ATTR_SUPPLIER, supplierInfo);
         requestDispatch(getServletConfig().getServletContext(), req, resp, Util.PAGE_SUPPLIERCFG);
@@ -174,7 +180,7 @@ public class AdminServlet extends HttpServlet {
     public void performPopulate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Populate popDB = new Populate(resetDB,catalog,login,backOrderStock,suppliers);
         popDB.doPopulate();
-        sendRedirect(resp, "/PlantsByWebSphere/" + Util.PAGE_HELP);
+        sendRedirect(resp, "/plants-web/" + Util.PAGE_HELP);
     }
     /**
      * Method performBackOrder.
@@ -330,7 +336,7 @@ public class AdminServlet extends HttpServlet {
             requestDispatch(getServletConfig().getServletContext(), req, resp, Util.PAGE_BACKADMIN);
         } else {
             // Unknown Backup Admin Action so go back to the Administration home page
-            sendRedirect(resp, "/PlantsByWebSphere/" + Util.PAGE_ADMINHOME);
+            sendRedirect(resp, "/plants-web/" + Util.PAGE_ADMINHOME);
         }
     }
     /**
@@ -452,6 +458,6 @@ public class AdminServlet extends HttpServlet {
      */
     private void requestDispatch(ServletContext ctx, HttpServletRequest req, HttpServletResponse resp, String page) throws ServletException, IOException {
         resp.setContentType("text/html");
-        ctx.getRequestDispatcher(page).forward(req, resp);
+        ctx.getRequestDispatcher("/"+ page).forward(req, resp);
     }
 }

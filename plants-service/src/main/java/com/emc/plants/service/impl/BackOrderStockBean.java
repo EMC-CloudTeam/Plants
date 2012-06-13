@@ -27,7 +27,7 @@ import com.emc.plants.utils.Util;
  */
 //@Stateless (name="BackOrderStock")
 //@RolesAllowed ("SampAdmin")
-@Repository
+@Repository("backOrderStockBean")
 @SuppressWarnings("unchecked")
 public class BackOrderStockBean implements BackOrderStock
 {

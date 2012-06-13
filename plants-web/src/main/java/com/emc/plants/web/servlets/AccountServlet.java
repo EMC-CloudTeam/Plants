@@ -84,12 +84,7 @@ public class AccountServlet extends HttpServlet
       performTask(request,response);
    }
 
-  /**
-    * Main service method for AccountServlet
-    *
-    * @param request Object that encapsulates the request to the servlet
-    * @param response Object that encapsulates the response from the servlet
-    */
+
    private void performTask(HttpServletRequest req, HttpServletResponse resp)
            throws ServletException, IOException
    {
@@ -172,6 +167,7 @@ public class AccountServlet extends HttpServlet
                      String category = (String) session.getAttribute(Util.ATTR_CATEGORY);
 
                      // Default to plants
+                      Util.debug("category : "+category);
                      if ((category == null) || (category.equals("null")))
                      {
                         url = Util.PAGE_PROMO;
@@ -417,7 +413,7 @@ public class AccountServlet extends HttpServlet
            String page)
            throws ServletException, IOException {
            resp.setContentType("text/html");
-           ctx.getRequestDispatcher("/login.jsp").include(req, resp);
+           ctx.getRequestDispatcher("/"+page).include(req, resp);
    }
    
 
