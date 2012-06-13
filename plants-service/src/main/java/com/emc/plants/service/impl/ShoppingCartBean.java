@@ -366,17 +366,19 @@ public class ShoppingCartBean implements ShoppingCart
 		Customer c = em.find(Customer.class, customerID);
 		order = new Order(c, billName, billAddr1, billAddr2, billCity, billState, billZip, billPhone,
 				shipName, shipAddr1, shipAddr2, shipCity, shipState, shipZip, shipPhone, creditCard,
-				ccNum, ccExpireMonth, ccExpireYear, cardHolder, shippingMethod, orderitems);		
+				ccNum, ccExpireMonth, ccExpireYear, cardHolder, shippingMethod, orderitems);	
+		
+		em.getTransaction().begin();
 		em.persist(order);
 		em.flush();  
 		//store the order items
 		for (OrderItem o : orderitems) {
 			o.setOrder(order);
-			o.updatePK();
+			o.updatePK(o.getInventory().getInventoryId());
 			em.persist(o);
 		}
 		em.flush();
-		
+		em.getTransaction().commit();
 		OrderInfo orderInfo=new OrderInfo(order);
 		/*
 		 }
