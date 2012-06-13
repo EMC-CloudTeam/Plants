@@ -28,7 +28,7 @@
         </property>
     </bean>
     
-
+ 	
     
     <bean id="myJdbcDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
       destroy-method="close">
@@ -44,4 +44,10 @@
 	  <property name="idleConnectionTestPeriod" value="3000" />
 	  <property name="loginTimeout" value="300" />
     </bean>
+     
+     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"  />
+ 	</bean>
+ 
+ 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 </beans>    

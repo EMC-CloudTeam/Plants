@@ -8,10 +8,16 @@
 //
 package com.emc.plants.web.servlets;
 
-import java.io.*;
+import java.io.IOException;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -37,12 +43,14 @@ public class ImageServlet extends HttpServlet
    /**
     * Servlet initialization.
     */
+
    public void init(ServletConfig config) throws ServletException
    {
       super.init(config);
       this.catalog = (Catalog)Util.getSpringBean("catalog");
       Util.setDebug(true);
    }
+
 
    /**
     * Process incoming HTTP GET requests

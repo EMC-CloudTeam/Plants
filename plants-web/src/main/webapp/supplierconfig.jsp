@@ -91,7 +91,7 @@ function verifyPhone(phoneVal)
 </head>
 <body class="adminactions" marginwidth="0" leftmargin="0">
 
-<%@page import="com.emc.plants.pojo.beans.SupplierInfo,,com.emc.plants.utils.Util,java.util.*" session="true" isThreadSafe="true" isErrorPage="false"%>
+<%@page import="com.emc.plants.pojo.beans.SupplierInfo,com.emc.plants.utils.Util,java.util.*" session="true" isThreadSafe="true" isErrorPage="false"%>
 <%
 	com.emc.plants.pojo.beans.SupplierInfo supplierInfo = 
       (com.emc.plants.pojo.beans.SupplierInfo) 
