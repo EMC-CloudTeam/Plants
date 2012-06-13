@@ -20,6 +20,8 @@ import com.emc.plants.persistence.Customer;
 import com.emc.plants.pojo.beans.CustomerInfo;
 import com.emc.plants.service.interfaces.Login;
 import com.emc.plants.utils.Util;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * LoginBean is the implementation class for the {@link Login} stateless session
@@ -30,17 +32,19 @@ import com.emc.plants.utils.Util;
  * @see Login
  */
 //@Stateless (name="Login")
-@Repository("login")
+ @Repository("login")
 public class LoginBean implements Login
 {
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;
-	
-	
 
-	public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
-		this.entityManagerFactory =entityManagerFactory;
-	}
+   // private EntityManager em;
+	
+	
+//
+//	public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+//		this.entityManagerFactory =entityManagerFactory;
+//	}
 	
 
 	
@@ -110,6 +114,7 @@ public class LoginBean implements Login
 	 * @param phone User's phone number.
 	 * @return CustomerInfo
 	 */
+      //@Transactional
 	public CustomerInfo createNewUser(String customerID, String password, String firstName,
 			String lastName, String addr1, String addr2,
 			String addrCity, String addrState, String addrZip,
@@ -144,8 +149,10 @@ public class LoginBean implements Login
 		Customer c = new Customer(customerID, password, firstName, lastName, addr1, addr2,
 				addrCity, addrState, addrZip, phone);
         EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
 		em.persist(c);
 		em.flush();
+        em.getTransaction().commit();
 		customerInfo = new CustomerInfo(c);
 		return customerInfo;
 	}
@@ -179,6 +186,7 @@ public class LoginBean implements Login
 		 customerInfo = new CustomerInfo(customer);
 		 */
         EntityManager em = entityManagerFactory.createEntityManager();
+
 		Customer c = em.find(Customer.class, customerID);
 		em.lock(c, LockModeType.WRITE);
 		em.refresh(c);
@@ -224,7 +232,10 @@ public class LoginBean implements Login
 		return customerInfo;
 		
 	}
-	
-	
+
+  /*  @PersistenceContext(unitName="PBW")
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }*/
 }
 

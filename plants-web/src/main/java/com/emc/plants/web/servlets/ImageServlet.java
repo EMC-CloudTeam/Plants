@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.emc.plants.service.interfaces.Catalog;
 import com.emc.plants.utils.Util;
 
@@ -41,11 +43,14 @@ public class ImageServlet extends HttpServlet
    /**
     * Servlet initialization.
     */
-	public void init(ServletConfig config) throws ServletException {
-		this.catalog = (Catalog) Util.getSpringBean("catalog");
-		super.init(config);
-		Util.setDebug(true);
-	}
+
+   public void init(ServletConfig config) throws ServletException
+   {
+      super.init(config);
+      this.catalog = (Catalog)Util.getSpringBean("catalog");
+      Util.setDebug(true);
+   }
+
 
    /**
     * Process incoming HTTP GET requests
@@ -116,6 +121,6 @@ public class ImageServlet extends HttpServlet
            HttpServletResponse resp, 
            String page)
            throws ServletException, IOException {
-           ctx.getRequestDispatcher(page).include(req, resp);
+           ctx.getRequestDispatcher("/"+page).include(req, resp);
    }
 }

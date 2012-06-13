@@ -11,9 +11,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import com.emc.plants.persistence.BackOrder;
@@ -36,12 +39,19 @@ import com.emc.plants.utils.Util;
  * @see ShoppingCart
  */
 //@Stateful(name="ShoppingCart")
-@Repository
+@Repository("shopping")
+@Scope(value="session")
 public class ShoppingCartBean implements ShoppingCart
 {
 
-	@PersistenceContext(unitName="PBW")
-	EntityManager em;
+	@Autowired
+	private EntityManagerFactory entityManagerFactory;
+	
+	
+
+	public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+		this.entityManagerFactory =entityManagerFactory;
+	}
 	
 	private ArrayList<ShoppingCartItem> items = new ArrayList<ShoppingCartItem>();
 	
@@ -65,6 +75,7 @@ public class ShoppingCartBean implements ShoppingCart
 		 Util.debug("ShoppingCartBean.getInventoryItem() - Exception: " + e);
 		 }
 		 */
+		EntityManager em = entityManagerFactory.createEntityManager();
 		inv = em.find(Inventory.class, inventoryID);
 		return inv;
 	}
@@ -75,6 +86,7 @@ public class ShoppingCartBean implements ShoppingCart
 	 */
 	public void setCartContents(ShoppingCartContents cartContents)
 	{
+		EntityManager em = entityManagerFactory.createEntityManager();
 		items = new ArrayList<ShoppingCartItem>();
 		int qty;
 		String inventoryID;
@@ -231,6 +243,7 @@ public class ShoppingCartBean implements ShoppingCart
 	 */
 	private void backOrder(Inventory inv, int amountToOrder)
 	{
+		EntityManager em = entityManagerFactory.createEntityManager();
 		BackOrder b=em.find(BackOrder.class, inv.getInventoryId());
 		if (b == null) {
 			//create a new backorder if none exists
@@ -342,6 +355,7 @@ public class ShoppingCartBean implements ShoppingCart
 		 ccNum, ccExpireMonth, ccExpireYear, cardHolder, shippingMethod, items);
 		 */
 		Collection<OrderItem> orderitems = new ArrayList<OrderItem>();
+		EntityManager em = entityManagerFactory.createEntityManager();
 		for (Object o : items) {
 			ShoppingCartItem si = (ShoppingCartItem) o;
 			Inventory inv = em.find(Inventory.class, si.getID());

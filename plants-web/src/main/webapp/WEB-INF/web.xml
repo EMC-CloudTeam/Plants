@@ -17,24 +17,18 @@
 
 
 
-<!-- <listener> -->
-<!-- <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
-<!-- </listener> -->
-
-<!-- <context-param> -->
-<!-- <param-name>contextConfigLocation</param-name> -->
-<!-- <param-value>WEB-INF/classes/app-context.xml</param-value> -->
-<!-- </context-param> -->
 
 <!-- </web-app> -->
 <web-app>
+
+
 	<display-name>PlantsByWebSphere Web Application</display-name>
 	<description>PlantsByWebSphere Web App</description>
 
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>WEB-INF/classes/app-context.xml</param-value>
+		<param-value>classpath:app-context-web.xml</param-value>
 	</context-param>
 	<context-param id="ContextParam_1">
 		<param-name>userID</param-name>
@@ -44,9 +38,13 @@
 		<param-name>password</param-name>
 		<param-value>wsdemo1</param-value>
 	</context-param>
-<!-- 	<listener> -->
-<!-- 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
-<!-- 	</listener> -->
+	
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+ 	</listener>
 	<servlet id="Servlet_1">
 		<servlet-name>AccountServlet</servlet-name>
 		<servlet-class>com.emc.plants.web.servlets.AccountServlet</servlet-class>
