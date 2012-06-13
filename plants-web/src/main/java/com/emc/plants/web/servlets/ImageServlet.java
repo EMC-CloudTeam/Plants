@@ -8,10 +8,16 @@
 //
 package com.emc.plants.web.servlets;
 
-import java.io.*;
+import java.io.IOException;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.emc.plants.service.interfaces.Catalog;
 import com.emc.plants.utils.Util;
@@ -29,15 +35,17 @@ public class ImageServlet extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	
 //	@EJB(beanName="Catalog")
+	@Autowired
 	private Catalog catalog;
 
    /**
     * Servlet initialization.
     */
-   public void init(ServletConfig config) throws ServletException
-   {
-      super.init(config);      
-   }
+	public void init(ServletConfig config) throws ServletException {
+		this.catalog = (Catalog) Util.getSpringBean("catalog");
+		super.init(config);
+		Util.setDebug(true);
+	}
 
    /**
     * Process incoming HTTP GET requests
