@@ -20,7 +20,7 @@ public class OrderInfo implements java.io.Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-private String orderID;
+private long orderID;
    private String billName;
    private String billAddr1;
    private String billAddr2;
@@ -45,7 +45,7 @@ private String orderID;
                     String billPhone, String shipName,
                     String shipaddr1, String shipAddr2, String shipCity,
                     String shipState, String shipZip, String shipPhone,
-                    int shippingMethod, String orderID)
+                    int shippingMethod, long orderID)
    {
       this.orderID = orderID;
       this.billName = billName;
@@ -91,7 +91,7 @@ private String orderID;
 
    /** Get the order ID.
     * @return Order ID */
-   public String getID() { return orderID; }
+   public long getID() { return orderID; }
    /** Get the order billing address name.
     * @return Billing address name. */
    public String getBillName() { return billName; }
