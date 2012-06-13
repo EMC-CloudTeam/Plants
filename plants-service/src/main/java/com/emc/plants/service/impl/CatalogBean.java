@@ -20,6 +20,7 @@ import javax.persistence.EntityManagerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.emc.plants.persistence.Inventory;
 import com.emc.plants.pojo.beans.StoreItem;
@@ -36,10 +37,11 @@ import com.emc.plants.utils.Util;
  */
 @SuppressWarnings("unchecked")
 @Repository("catalog")
+@Transactional
 public class CatalogBean implements Catalog
 {
-    @Autowired
-	EntityManagerFactory entityManagerFactory ;
+	@PersistenceContext(unitName="PBW")
+	EntityManager em;
 
 	
 	/**
@@ -81,7 +83,6 @@ public class CatalogBean implements Catalog
 		 items.addElement( new ShoppingCartItem(inv) );
 		 }
 		 */
-        EntityManager em = entityManagerFactory.createEntityManager();
 		Query q = em.createNamedQuery("getItemsByCategory");
 		q.setParameter("category", category);
 		//The return type must be Vector because the PBW client ActiveX sample requires Vector
@@ -110,7 +111,6 @@ public class CatalogBean implements Catalog
 		 items.addElement( new ShoppingCartItem(inv) );
 		 }
 		 */
-        EntityManager em = entityManagerFactory.createEntityManager();
 		Query q = em.createNamedQuery("getItemsLikeName");
 		q.setParameter("name", '%' + name + '%');
 		//The return type must be Vector because the PBW client ActiveX sample requires Vector
@@ -143,7 +143,6 @@ public class CatalogBean implements Catalog
 		 Inventory inv = invHome.findByPrimaryKey(new InventoryKey(inventoryID));
 		 si = new ShoppingCartItem(inv);
 		 */
-        EntityManager em = entityManagerFactory.createEntityManager();
 		si = em.find(Inventory.class, inventoryID);
 		return si;
 	}
@@ -166,7 +165,6 @@ public class CatalogBean implements Catalog
 		  if (inv != null)
 		  retval = true;
 		  */
-        EntityManager em = entityManagerFactory.createEntityManager();
 		em.persist(item);
 		return retval;
 	}
@@ -198,7 +196,6 @@ public class CatalogBean implements Catalog
 		 inv.remove();
 		 retval = true;
 		 */
-        EntityManager em = entityManagerFactory.createEntityManager();
 		em.remove(em.find(Inventory.class, inventoryID));
 		return retval;
 	}
@@ -316,6 +313,7 @@ public class CatalogBean implements Catalog
 	 * @param inventoryID The id of the inventory item wanted.
 	 * @param imgbytes Buffer containing the image.
 	 */
+	@Transactional
 	public void setItemImageBytes(String inventoryID, byte[] imgbytes)
 	{
 		Inventory inv = getInvUpdate(inventoryID);
@@ -331,6 +329,7 @@ public class CatalogBean implements Catalog
 	 * @param inventoryID The inventory item's ID.
 	 * @param price The inventory item's new price.
 	 */
+	@Transactional
 	public void setItemPrice(String inventoryID, float price)
 	{ 
 		Inventory inv = getInvUpdate(inventoryID);
@@ -346,6 +345,7 @@ public class CatalogBean implements Catalog
 	 * @param inventoryID The inventory item's ID.
 	 * @param cost The inventory item's new cost.
 	 */
+	@Transactional
 	public void setItemCost(String inventoryID, float cost)
 	{ 
 		Inventory inv = getInvUpdate(inventoryID);
@@ -361,6 +361,7 @@ public class CatalogBean implements Catalog
 	 * @param inventoryID The inventory item's ID.
 	 * @param quantity The inventory item's new quantity.
 	 */
+	@Transactional
 	public void setItemQuantity(String inventoryID, int quantity)
 	{ 
 		Inventory inv = getInvUpdate(inventoryID);
@@ -376,6 +377,7 @@ public class CatalogBean implements Catalog
 	 * @param inventoryID The inventory item's ID.
 	 * @param notes The inventory item's new notes.
 	 */
+	@Transactional
 	public void setItemNotes(String inventoryID, String notes)
 	{ 
 		Inventory inv = getInvUpdate(inventoryID);
@@ -391,6 +393,7 @@ public class CatalogBean implements Catalog
 	 * @param inventoryID The inventory item's ID.
 	 * @param isPublic True, if this item can be viewed by the public.
 	 */
+	@Transactional
 	public void setItemPrivacy(String inventoryID, boolean isPublic)
 	{ 
 		Inventory inv = getInvUpdate(inventoryID);
@@ -408,7 +411,6 @@ public class CatalogBean implements Catalog
 	 */
 	private Inventory getInv(String inventoryID)
 	{
-        EntityManager em = entityManagerFactory.createEntityManager();
 		return em.find(Inventory.class, inventoryID);
 	}
 	
@@ -427,7 +429,6 @@ public class CatalogBean implements Catalog
 		 inv = invHome.findByPrimaryKeyUpdate(inventoryID);
 		 */
 		// TODO: lowp: eventually replace with find for update hint
-        EntityManager em = entityManagerFactory.createEntityManager();
 		inv = em.find(Inventory.class, inventoryID);
 		em.lock(inv, LockModeType.WRITE);
 		em.refresh(inv);
