@@ -1,6 +1,7 @@
 package com.emc.plants.persistence;
 
 
+import java.math.BigDecimal;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -37,7 +38,7 @@ public class Order
 	@GeneratedValue(strategy=GenerationType.TABLE,generator="OrderSeq")
 	@TableGenerator(name="OrderSeq", table="IDGENERATOR", pkColumnName="IDNAME", 
 			pkColumnValue="ORDER", valueColumnName="IDVALUE")
-	private String orderID;
+	private long orderID;
 	private String sellDate;
 	private String billName;
 	private String billAddr1;
@@ -166,7 +167,7 @@ public class Order
 		
 		
 	}
-	public Order(String orderID)
+	public Order(long orderID)
 	{
 		setOrderID(orderID);
 	}
@@ -284,11 +285,11 @@ public class Order
 		this.items = items;
 	}*/
 	
-	public String getOrderID() {
+	public long getOrderID() {
 		return orderID;
 	}
 	
-	public void setOrderID(String orderID) {
+	public void setOrderID(long orderID) {
 		this.orderID = orderID;
 	}
 	

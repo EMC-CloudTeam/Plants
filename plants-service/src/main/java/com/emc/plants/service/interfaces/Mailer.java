@@ -25,6 +25,6 @@ public interface Mailer
      * @param orderKey
      * @throws MailerAppException
      */
-    public void createAndSendMail(CustomerInfo customerInfo, String orderKey) throws MailerAppException;
+    public void createAndSendMail(CustomerInfo customerInfo, long orderKey) throws MailerAppException;
 
 }

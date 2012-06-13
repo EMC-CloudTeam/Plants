@@ -10,7 +10,6 @@ package com.emc.plants.service.impl;
 
 import java.util.Date;
 
-import javax.annotation.Resource;
 import javax.mail.Message;
 import javax.mail.Multipart;
 import javax.mail.Session;
@@ -21,7 +20,6 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -62,7 +60,7 @@ public class MailerBean implements Mailer
 	 * @param orderKey The order number.
 	 * @return The email message.
 	 */
-	private String createMessage(String orderKey) 
+	private String createMessage(long orderKey) 
 	{
 		Util.debug("creating email message for order:"+orderKey);
 		StringBuffer msg = new StringBuffer();
@@ -90,7 +88,7 @@ public class MailerBean implements Mailer
 	 * @param orderKey The order number.
 	 * @return The Order number string.
 	 */
-	private String createSubjectLine(String orderKey) 
+	private String createSubjectLine(long orderKey) 
 	{
 		StringBuffer msg = new StringBuffer();
 		msg.append("Your order number " + orderKey);
@@ -105,7 +103,7 @@ public class MailerBean implements Mailer
 	 * @param orderKey
 	 * @throws MailerAppException
 	 */
-	public void createAndSendMail(CustomerInfo customerInfo, String orderKey) throws MailerAppException 
+	public void createAndSendMail(CustomerInfo customerInfo, long orderKey) throws MailerAppException 
 	{
 		try 
 		{

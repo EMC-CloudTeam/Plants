@@ -20,7 +20,7 @@ All Rights Reserved * Licensed Materials - Property of IBM
 </head>
 <body class="work" onload="top.deselectMenu('menu1');top.deselectMenu('menu2');top.deselectMenu('menu3');top.deselectMenu('menu4')">
 <%
-	String orderID = (String) request.getAttribute(com.emc.plants.utils.Util.ATTR_ORDERID);
+	Long orderID = (Long) request.getAttribute(com.emc.plants.utils.Util.ATTR_ORDERID);
 %>
 
 <table border="0" cellpadding="0" cellspacing="5" width="100%">
@@ -37,7 +37,7 @@ All Rights Reserved * Licensed Materials - Property of IBM
      	  </tr>
         <tr>
           <td>
-            <p>Thank you for making your Plants By WebSphere purchase!</p><br>
+            <p>Thank you for making your Plants By Spring Source purchase!</p><br>
             <p>Order number <%= orderID%></p><br>
             <p>Expected arrival in 5-7 business days.</p><br>
           </td>
