@@ -391,9 +391,9 @@ public class ShoppingServlet extends HttpServlet
 		{
 			ShoppingCart shoppingCart = null;
 			HttpSession session = req.getSession(true);
-			String key = (String) session.getAttribute(Util.ATTR_ORDERKEY);
+			long key = (Long) session.getAttribute(Util.ATTR_ORDERKEY);
 			req.setAttribute(Util.ATTR_ORDERID, key);
-			String orderKey = key;
+			long orderKey = key;
 			Util.debug("completecheckout: order id ="+orderKey );
 			CustomerInfo customerInfo = (CustomerInfo) session.getAttribute(Util.ATTR_CUSTOMER);
 			// Check the available inventory and backorder if necessary.
