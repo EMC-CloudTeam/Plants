@@ -1,0 +1,446 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+
+<HEAD>
+
+<!--
+"This sample program is provided AS IS and may be used, executed, copied and modified without royalty payment by customer (a) for its own
+instruction and study, (b) in order to develop applications designed to run with an IBM WebSphere product, either for customer's own internal use
+or for redistribution by customer, as part of such an application, in customer's own products."
+
+Product 5630-A36,  (C) COPYRIGHT International Business Machines Corp., 2001, 2008
+All Rights Reserved * Licensed Materials - Property of IBM
+-->
+
+<meta http-equiv="Content-Type" CONTENT="text/html; charset=utf-8">
+
+<script language="JavaScript" src="/docs/scripts/browserStyle.js"></script>
+
+<TITLE>Building Plants By WebSphere Sample</TITLE>
+
+</HEAD>
+
+<BODY class="sampcont">
+
+<TABLE WIDTH=80% BORDER=0 CELLPADDING=0 CELLSPACING=0 class="sampnav">
+  	<TR>
+
+    <TD ALIGN=LEFT VALIGN=TOP colspan="2" class="breadcrumb">Plants by WebSphere</TD>
+	</TR>
+
+  </table>
+
+  <br>
+  <TABLE WIDTH=80% BORDER=0 CELLPADDING=0 CELLSPACING=0 class="sampnav">
+  <TR>
+     <TD ALIGN=LEFT VALIGN=TOP>
+      <H1 CLASS="samp"><img src="/docs/images/buildit.gif" width="18" height="18" border="0" alt="">
+        Building the Plants by WebSphere Sample using the Ant build tool</H1>
+     </TD>
+</TABLE>
+
+<div id="ChoseOS" style="display:none">   <!-- This is the ChoseOS division -->
+<p>Select the platform on which the <samp>PlantsByWebSphere.ear</samp> file is built.</p>
+<A HREF="buildit.html?os=Win"> <BR> Windows </A>
+<A HREF="buildit.html?os=UNIX"> <BR> Linux and UNIX </A>
+<A HREF="buildit.html?os=zOS"> <BR> z/OS and iSeries </A>
+</div>                                    <!-- end ChoseOS division -->
+
+<div id="MainBody" style="display:block">   <!-- Begin MainBody division -->
+
+<br>
+<br>
+
+<div id="zOS_01" style="display:block"> <!-- Begin zOS_01 division -->
+  <table width="35%" border="0" cellspacing="0" cellpadding="0" class="sampnav">
+    <tr>
+      <td class="sampnav"><a href="#zOSportability">J2EE portability</a></td>
+    </tr>
+
+    <tr>
+      <td class="sampnav"><a href="#zOSrebuilding">Rebuilding the Samples that ship in
+      this gallery</a></td>
+    </tr>
+</table>
+</div> <!-- End zOS_1 division -->
+
+<table width="35%" border="0" cellspacing="0" cellpadding="0"
+	class="sampnav">
+	<tbody><tr>
+		<td class="sampnav"><a href="#start">Getting started</a></td>
+	</tr>
+	<tr>
+		<td class="sampnav"><a href="#directory">Identifying the directory
+		structure</a></td>
+	</tr>
+
+	<tr>
+		<td class="sampnav"><a href="#rebuild">Rebuilding and installing the
+		Sample</a></td>
+	</tr>
+</tbody></table>
+
+
+<div id="zOS_02" style="display:block"> <!-- Begin zOS_02 division -->
+  <!--************ J2EE portability  ************-->
+  <h2>
+  <a NAME="zOSportability" class="sampnav"></a>J2EE portability</h2>
+  <NOSCRIPT>On z/OS or iSeries platforms:</NOSCRIPT>
+  <P>One of the great benefits of developing applications on a J2EE
+  platform is portability.&nbsp; All of the Sample programs in the Samples
+  Gallery are developed on a workstation and run on z/OS and iSeries systems without
+  changing one line of Java code.&nbsp; By building J2EE applications on
+  Intel or UNIX systems, a developer can eliminate the challenges of
+  EBCDIC to ASCII or ASCII to EBCDIC file conversions.&nbsp;
+  The availability of tools makes it easy for developers to write and test
+  on a development workstation and install the enterprise archive (EAR)
+  files on z/OS and iSeries systems.
+  <BR>
+  <!--************ Rebuilding the Samples that ship in this gallery ************--></P>
+  <h2>
+  <a NAME="zOSrebuilding" class="sampnav"></a>Rebuilding the Samples that ship in this
+  gallery</h2>
+  <NOSCRIPT>On z/OS or iSeries platforms:</NOSCRIPT>
+  <P>Every WebSphere Application Server (Application Server) for z/OS and iSeries
+  customer is entitled to the Application Server media for
+  multiplatforms. If you install the WebSphere Application Server base product and
+  the Samples on one of the platforms supported by this package you see
+  the same gallery.  The one exception is
+  that when you click <b>sample_name >  Build with Ant > platform > Rebuilding and installing the sample.ear file</b>, you get instructions to
+  rebuild the EAR file on that platform.&nbsp; Because text files in an
+  EAR&nbsp;file (XML, xmi, JavaServer Pages (JSP) files, and so on) must
+  be in an ASCII format, it is easier to edit those files on an ASCII
+  machine.&nbsp; If you make changes  on an ASCII machine, you can then deploy and install the
+  resulting EAR file on the z/OS or iSeries platform without an EBCDIC to ASCII
+  conversion.&nbsp;  <BR>
+</div> <!-- End z/OS_02 division -->
+
+<!--*********** BEFORE YOU BEGIN *************-->
+<h2><a name="start" class="sampnav">Getting started</a></h2>
+
+<div id="zOS_03" style="display:block">
+  <NOSCRIPT>On z/OS or iSeries platforms:</NOSCRIPT>
+  <p>Install WebSphere Application Server on the distributed
+	platform of your choice and indicate to install Application Server
+	Sample applications as well.</p>
+</div>
+
+<p>Make a backup copy of the <samp><var>&lt;profile_root&gt;</var>/samples</samp>&nbsp;
+directory before attempting to modify or rebuild the Samples. Create a zip file of the
+  <samp>samples</samp> directory. You can restore the <samp>samples</samp> directory
+  to its original state by extracting the zip file.</p>
+
+
+<!--***** Directory Structure of the Samples build **********-->
+<h2><a name="directory" class="sampnav">Identifying the directory
+structure</a></h2>
+<p>The Samples are installed in the following directories:</p>
+<br>
+
+<table width="100%" border="1" cellspacing="0" cellpadding="3">
+	<tbody><tr>
+		<td class="sampnav"><samp><var>&lt;profile_root&gt;</var>/samples/src/PlantsByWebSphere</samp></td>
+		<td class="sampnav">Contains the Sample source code for the Plants by
+		WebSphere Sample.</td>
+	</tr>
+	<tr>
+		<td class="sampnav"><samp><var>&lt;profile_root&gt;</var>/samples/lib/PlantsByWebSphere</samp></td>
+		<td class="sampnav">Contains the Web archive (WAR) files, Java archive
+		(JAR) files, and the final <samp>PlantsByWebSphere.ear</samp> file for
+		the Plants by WebSphere Sample. This directory is created after the Plants by
+		WebSphere Sample is rebuilt.</td>
+	</tr>
+	<tr>
+		<td class="sampnav"><samp><var>&lt;profile_root&gt;</var>/samples/javadoc/PlantsByWebSphere</samp></td>
+		<td class="sampnav">Contains the Javadoc documentation. This directory is created after the Plants by
+		WebSphere Sample is rebuilt.</td>
+	</tr>
+	<tr>
+		<td class="sampnav"><samp><var>&lt;profile_root&gt;</var>/samples/bld/PlantsByWebSphere</samp></td>
+		<td class="sampnav">Contains the generated class files. Use these class
+		files to generate the final <samp>PlantsByWebSphere.ear</samp>
+		file. This directory is created after the Plants by
+		WebSphere Sample is rebuilt.</td>
+	</tr>
+</tbody></table>
+<!-- Rebuilding and Installing the PlantsByWebSphere.ear File-->
+
+<h2><a name="rebuild" class="sampnav">Rebuilding and installing the
+Sample</a></h2>
+<p> The Plants by WebSphere Sample automatically installs with the WebSphere Application
+Server. You do not have to build the Plants by WebSphere Sample before using
+it. The following directions describe the steps to rebuild the Sample, along
+ with additional information for modifications. </p>
+<br>
+<table border="0" cellspacing="0" cellpadding="1">
+	<tbody><tr>
+		<td class="sampnav"><a href="#execute">Executing the Sample build
+		script</a></td>
+	</tr>
+</table>
+<div id="zOS_04" style="display:block">
+  <table border="0" cellspacing="0" cellpadding="1">
+    <tr>
+      <td class="sampnav"><a href="#transfer">Transferring the rebuilt <samp>PlantsByWebSphere.ear</samp> file</a></td>
+    </tr>
+</table>
+</div>
+	<tr>
+		<td class="sampnav"><a href="#deploy">Removing and reinstalling the <samp>PlantsByWebSphere.ear</samp>
+		file</a></td>
+	</tr>
+</tbody></table>
+
+<h3><a name="execute" class="sampnav"> Executing the Sample build script</a></h3>
+
+<p>To rebuild this Sample, verify that <samp><i>profile_root</i>/bin</samp> is in your PATH environment variable.
+Follow these steps to execute the Sample build script, which rebuilds the Sample:</p>
+<ol>
+	<li>Open a command prompt.</li>
+	<li>At the command line, change to the <samp><var>&lt;profile_root&gt;</var>/samples/src/PlantsByWebSphere</samp>
+	directory.</li>
+	<li>Run the Sample build script:</li>
+
+<div id="Win_01" style="display:block">
+    <BR>
+    <NOSCRIPT><dd>On Windows platforms:</dd></NOSCRIPT>
+    <dd>Type the following command:</dd> <BR><BR>
+    <dd><samp><var>&lt;profile_root&gt;</var>\samples\bin\PlantsByWebSphere\buildplantsby.bat</samp> <br></dd>
+</div>
+<div id="UNIX_01" style="display:block">
+    <BR>
+    <NOSCRIPT><dd>On Linux and UNIX platforms:<dd></NOSCRIPT>
+    <dd>Type the following command:</dd> <BR><BR>
+    <dd><samp>. <var>&lt;profile_root&gt;</var>/samples/bin/PlantsByWebSphere/buildplantsby.sh</samp></dd>
+</div>
+<div id="zOS_05" style="display:block"> <!-- Begin zOS_05 division -->
+    <BR>
+  <NOSCRIPT><dd>On z/OS or iSeries platforms (based on development platform selected):</dd></NOSCRIPT>
+  <UL>
+    <LI>
+      On Windows development platforms, type the following command:<BR><BR>
+      <samp><var>&lt;profile_root&gt;</var>\samples\bin\PlantsByWebSphere\buildplantsby.bat</samp> <br>
+    </LI><BR><BR>
+    <LI>
+      On UNIX and Linux development platforms, type the following command:<BR><BR>
+      <samp>. <var>&lt;profile_root&gt;</var>/samples/bin/PlantsByWebSphere/buildplantsby.sh</samp><br>
+    </LI>
+  </UL>
+</div> <!-- End zOS_05 division -->
+
+</ol>
+<p>The Sample is now built.</p>
+<p>The <samp>buildplantsby.bat</samp> and the <samp>buildplantsby.sh</samp> script in the <samp><i>profile_root</i>/samples/bin/PlantsByWebSphere</samp>
+  directory sets the appropriate class path information and executes
+  the Ant build utility. Ant reads the <samp>build.xml</samp> files, which
+  describe how to build the Sample. Refer to the <a href="http://jakarta.apache.org/ant/index.html" target="new">
+  Jakarta Web site</a> for additional documentation on Ant. </p>
+
+<p><img src="/docs/images/takeNote.gif" width="13" height="13" border="0" alt="Important Information">
+  &nbsp;During the build process, only class files
+that have changes are rebuilt. The remaining class files are repackaged
+into the new EAR file.</p>
+
+<div id="zOS_06" style="display:block"> <!-- Begin zOS_06 division -->
+  <h3><a name="transfer" class="sampnav">Transferring the rebuilt <samp>PlantsByWebSphere.ear</samp>
+    file</a></h3>
+  <p> Use the File Transfer Protocol (FTP) to transfer the binary EAR file to the
+	z/OS or iSeries server, using the following instructions. </P>
+    <OL>
+        <LI>Find the rebuilt EAR file in the <VAR>&lt;profile_root></VAR><samp>/samples/lib/PlantsByWebSphere</samp>
+        directory</LI>
+
+    	<LI>Open an FTP session to the WebSphere Application Server for z/OS or iSeries
+		from the development platform</LI>
+
+		<LI>Change directory to
+		<VAR>&lt;profile_root></VAR><samp>/samples/lib/PlantsByWebSphere</samp>
+		<br>You may need to create the directory if it does not exist.</LI>
+
+		<LI>If the <samp>PlantsByWebSphere.ear</samp> file exists, delete it so that the updated file can be written.
+		<br><samp>del</samp> <samp>PlantsByWebSphere.ear</samp></LI>
+
+		<LI><samp>bin</samp></LI>
+
+		<LI><samp>put</samp> <samp>PlantsByWebSphere.ear</samp></LI>
+
+		<LI><samp>quit</samp></LI>
+	</OL>
+</div> <!-- End zOS_06 division -->
+
+<h3><a name="deploy" class="sampnav"> Removing and reinstalling the <samp>PlantsByWebSphere.ear</samp>
+file</a></h3>
+
+<P>By default, the Plants by WebSphere Sample installs into the <samp><i>profile_root</i>/installedApps/<var>&lt;cell
+  name&gt;</var></samp> directory, where <samp><var>&lt;cell name&gt;</var></samp>
+  is the name of the cell where your application is installed. Reinstall the Sample as described in the following steps:<br>
+  <br>
+</p>
+<ol>
+  <li>Stop the application server.</li>
+  <li>Remove the Plants by WebSphere Sample EAR file:
+        <ol type="a">
+        <li>Type the following commands: <br>
+             <div id="Win_04" style="display:block">
+                 <br>
+                 <NOSCRIPT>On Windows platforms:</NOSCRIPT>
+                 <nobr><samp>cd <i>&lt;profile_root&gt;</i>\bin </samp></nobr>
+                 <br>
+                 <nobr><samp>setupCmdLine</samp></nobr>
+             </div>
+             <div id="UNIX_04" style="display:block">
+                 <br>
+                 <NOSCRIPT>On Linux and UNIX platforms:</NOSCRIPT>
+                 <nobr><samp>cd <i>&lt;profile_root&gt;</i>/bin </samp></nobr>
+                 <br>
+                 <nobr><samp>. ./setupCmdLine.sh </samp></nobr>
+             </div>
+             <div id="zOS_10" style="display:block">
+                 <br>
+                 On z/OS platforms:<br>
+                 <nobr><samp>cd <i>&lt;profile_root&gt;</i>/bin </samp></nobr>
+                 <br>
+                 <nobr><samp>. ./setupCmdLine.sh </samp></nobr>
+				 <br>
+                 <br>
+                 On iSeries platforms:<br>
+                 <nobr><samp>cd <i>&lt;profile_root&gt;</i>/bin </samp></nobr>
+                 <br>
+                 <nobr><samp>. ./setupCmdLine </samp></nobr>
+             </div>
+             <br>
+             where <i>&lt;profile_root&gt; </i> represents the profile installation directory.
+        </li>
+        <li>Type the following command to uninstall the application
+                   (<var>profile_root</var><samp>/bin</samp> must be in your PATH):
+
+        <div id="Win_02" style="display:block">
+            <br>
+            <NOSCRIPT>On Windows platforms:</NOSCRIPT>
+            <pre>wsadmin -conntype none -lang jython -c &quot;AdminApp.uninstall('PlantsByWebSphere')&quot; </pre>
+        </div>
+        <div id="UNIX_02" style="display:block">
+            <br>
+            <NOSCRIPT>On Linux and UNIX platforms:</NOSCRIPT>
+            <pre>wsadmin.sh -conntype none -lang jython -c &quot;AdminApp.uninstall('PlantsByWebSphere')&quot; </pre>
+        </div>
+
+        <div id="zOS_07" style="display:block">
+            <br>
+            On z/OS platforms:
+            <pre>wsadmin.sh -conntype none -lang jython -c &quot;AdminApp.uninstall('PlantsByWebSphere')&quot; </pre>
+            <br>
+            On iSeries platforms:
+            <pre>wsadmin -conntype none -lang jython -c &quot;AdminApp.uninstall('PlantsByWebSphere')&quot; </pre>
+        </div>
+
+      </li>
+      </ol>
+  <li>Reinstall the Plants by WebSphere Sample:
+  <ul>
+    <li>Change to the <samp><i>profile_root</i>/samples/lib/PlantsByWebSphere</samp>
+      directory.</li>
+    <li>Locate the <samp>PlantsByWebSphere.ear</samp> file.</li>
+    <li>Type the following command:<br>
+
+      <div id="Win_03" style="display:block"> <!-- Begin Win_03 division -->
+        <br>
+        <NOSCRIPT>On Windows platforms:</NOSCRIPT>
+		<PRE>wsadmin -conntype none -lang jython -c "AdminApp.install('PlantsByWebSphere.ear',
+	['-appname', 'PlantsByWebSphere', '-usedefaultbindings', '-node', '<var>&lt;node&gt;</var>', '-server', '<var>&lt;server&gt;</var>',
+	'-deployejb', '-deployejb.dbtype', 'DERBY_V10'] )"
+	    </PRE>
+        where <var>&lt;node&gt;</var> is the name of node, and <var>&lt;server&gt;</var> is the name of server on which to install the
+        Sample. <br>
+
+      </div> <!-- End Win_03 division -->
+      <div id="UNIX_03" style="display:block"> <!-- Begin UNIX_03 division -->
+        <br>
+        <NOSCRIPT>On Linux and UNIX platforms:</NOSCRIPT>
+		<PRE>wsadmin.sh -conntype none -lang jython -c "AdminApp.install('PlantsByWebSphere.ear',
+	['-appname', 'PlantsByWebSphere', '-usedefaultbindings', '-node', '<var>&lt;node&gt;</var>', '-server', '<var>&lt;server&gt;</var>',
+	'-deployejb', '-deployejb.dbtype', 'DERBY_V10'] )"
+	    </PRE>
+        where <var>&lt;node&gt;</var> is the name of node, and <var>&lt;server&gt;</var> is the name of server on which to install the
+        Sample. <br>
+      </div> <!-- End UNIX_03 division -->
+      <div id="zOS_08" style="display:block"> <!-- Begin zOS_08 division -->
+        <br>
+        On z/OS platforms:
+        <PRE>wsadmin.sh -conntype none -lang jython -c "AdminApp.install('PlantsByWebSphere.ear',
+	['-appname', 'PlantsByWebSphere', '-usedefaultbindings', '-node', '<var>&lt;node&gt;</var>', '-server', '<var>&lt;server&gt;</var>',
+	'-deployejb', '-deployejb.dbtype', 'DERBY_V10'] )"
+	    </PRE>
+	   <br>
+		On iSeries platforms:
+		<PRE>wsadmin -conntype none -lang jython -c "AdminApp.install('PlantsByWebSphere.ear',
+	['-appname', 'PlantsByWebSphere', '-usedefaultbindings', '-node', '<var>&lt;node&gt;</var>', '-server', '<var>&lt;server&gt;</var>',
+	'-deployejb', '-deployejb.dbtype', 'DERBY_V10'] )"
+	    </PRE>
+        where <var>&lt;node&gt;</var> is the name of node, and <var>&lt;server&gt;</var> is the name of server on which to install the
+        Sample. <br>
+      </div> <!-- End zOS_08 division -->
+
+    </li>
+  </ul>
+ <li>Start the application server.</li>
+</ol>
+	<p>&nbsp;</p>
+
+<p>The rebuilt <samp>PlantsByWebsphere.ear</samp> file is now deployed
+to your Application Server.</p>
+
+</div>   <!-- End MainBody division -->
+
+<!--**********************************************-->
+<!--***   DO NOT TRANSLATE BEYOND THIS POINT   ***-->
+<!--**********************************************-->
+
+<script type="text/javascript">
+    var os = "none"
+    var href = location.href
+    var offset = href.lastIndexOf("=") + 1
+    if (offset > 0) {
+        os = href.substring(offset, href.length)
+    }
+
+    if (os=="none") {
+        document.getElementById("ChoseOS").style.display="block"
+        document.getElementById("MainBody").style.display="none"
+    }
+
+    if (os != "none") {
+        var divElements = document.getElementsByTagName("div")
+        for (var i = 0;i < divElements.length; i++) {
+            var divFound = divElements[i].getAttribute("Id")
+            if ( os == "iSeries" &&
+                 ( divFound.lastIndexOf("Win_") >= 0 ||
+                   divFound.lastIndexOf("UNIX_") >= 0 ||
+                   divFound.lastIndexOf("zOS_") >= 0 ) ) {
+                divElements[i].style.display="none"
+            }
+            if ( os == "Win" &&
+                 ( divFound.lastIndexOf("iSeries_") >= 0 ||
+                   divFound.lastIndexOf("UNIX_") >= 0 ||
+                   divFound.lastIndexOf("zOS_") >= 0 ) ) {
+                divElements[i].style.display="none"
+            }
+            if ( os == "UNIX" &&
+                 ( divFound.lastIndexOf("iSeries_") >= 0 ||
+                   divFound.lastIndexOf("Win_") >= 0 ||
+                   divFound.lastIndexOf("zOS_") >= 0 ) ) {
+                divElements[i].style.display="none"
+            }
+            if ( os == "zOS" &&
+                 ( divFound.lastIndexOf("iSeries_") >= 0 ||
+                   divFound.lastIndexOf("Win_") >= 0 ||
+                   divFound.lastIndexOf("UNIX_") >= 0 ) ) {
+                divElements[i].style.display="none"
+            }
+        }
+    }
+</script>
+
+</BODY>
+</HTML>
+

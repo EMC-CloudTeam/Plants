@@ -10,7 +10,6 @@ package com.emc.plants.service.impl;
 
 import java.util.Date;
 
-import javax.annotation.Resource;
 import javax.mail.Message;
 import javax.mail.Multipart;
 import javax.mail.Session;
@@ -21,7 +20,6 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
