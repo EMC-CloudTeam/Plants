@@ -50,13 +50,13 @@
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
     </bean>
-  	 -->
+
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
         <property name="dataSource" ref="myJdbcDataSource"/>
     </bean>
-
+       -->
 
 
 
