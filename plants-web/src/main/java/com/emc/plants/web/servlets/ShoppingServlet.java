@@ -433,6 +433,8 @@ public class ShoppingServlet extends HttpServlet
 					Util.debug("ShoppingCart.checkInventory() - checking Inventory quantity of item: " + si.getID());
 				}
 			}
+			
+			
 			try
 			{
 				mailer.createAndSendMail(customerInfo, orderKey);
@@ -453,6 +455,9 @@ public class ShoppingServlet extends HttpServlet
 			session.removeAttribute(Util.ATTR_CATEGORY);
 			session.removeAttribute(Util.ATTR_ORDERKEY);
 			session.removeAttribute(Util.ATTR_CHECKOUT);
+			HttpSession httpSession = req.getSession(true);
+			
+			httpSession.invalidate();
 			requestDispatch(getServletConfig().getServletContext(), req, resp, Util.PAGE_ORDERDONE);
 		}
 	}
