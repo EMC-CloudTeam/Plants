@@ -19,7 +19,9 @@
 		<class>com.emc.plants.persistence.OrderItem$PK</class>
 		<class>com.emc.plants.persistence.Supplier</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		
+		 <properties>
+			<property name="hibernate.show_sql" value="true"/>
+		 </properties>
 		<!-- 
         <properties>
             
