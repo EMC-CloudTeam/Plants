@@ -370,15 +370,22 @@ public class ShoppingCartBean implements ShoppingCart
 		
 		em.getTransaction().begin();
 		em.persist(order);
-		em.flush();  
+		em.flush();
+		em.getTransaction().commit();
+		
+		em.getTransaction().begin();
 		//store the order items
 		for (OrderItem o : orderitems) {
 			o.setOrder(order);
+			
+			System.out.println("OrderID :: " + order.getOrderID());
 			o.updatePK(o.getInventory().getInventoryId());
 			em.persist(o);
 		}
 		em.flush();
 		em.getTransaction().commit();
+		
+		
 		OrderInfo orderInfo=new OrderInfo(order);
 		/*
 		 }
