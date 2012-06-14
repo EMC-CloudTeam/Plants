@@ -181,6 +181,8 @@ public class ShoppingServlet extends HttpServlet
 			{
 				Util.debug("shopping cart is NULL, must create it");
 				shoppingCart = (ShoppingCart) WebUtil.getSpringBean(this.getServletContext(), "shopping");
+				System.out.println("Items:: " +shoppingCart.getItems()+ " Size :: " +shoppingCart.getItems().size());
+				shoppingCart.setItems(new ArrayList<ShoppingCartItem>());
 			}
 			else
 			{
@@ -234,6 +236,8 @@ public class ShoppingServlet extends HttpServlet
 				Util.debug("updatequantity: shopping cart ref must have timed out, create a new one");
 				ShoppingCartContents cartContents = (ShoppingCartContents) session.getAttribute(Util.ATTR_CART_CONTENTS);
 				shoppingCart = (ShoppingCart) WebUtil.getSpringBean(this.getServletContext(), "shopping");
+				
+				
 				if (cartContents != null) {
 					shoppingCart.setCartContents(cartContents);
 				}
@@ -457,7 +461,7 @@ public class ShoppingServlet extends HttpServlet
 			session.removeAttribute(Util.ATTR_CHECKOUT);
 			HttpSession httpSession = req.getSession(true);
 			
-			httpSession.invalidate();
+			//httpSession.invalidate();
 			requestDispatch(getServletConfig().getServletContext(), req, resp, Util.PAGE_ORDERDONE);
 		}
 	}
