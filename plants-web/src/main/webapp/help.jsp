@@ -36,7 +36,7 @@ if (com.emc.plants.utils.Util.debugOn())
 <br>
 <p>For more information about Plants by WebSphere,
 <!-- <META name="links-collection-enabled" content="false"> --> 
-<a href="/plants-web/docs/en/techNotes.html" target="_blank">see the TechNotes</a>.
+<a href="/docs/en/techNotes.html" target="_blank">see the TechNotes</a>.
 <!-- <META name="links-collection-enabled" content="true"> --> 
 </p>
 <br>
