@@ -41,7 +41,7 @@ public class BackOrder
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE, generator="BackOrderSeq")
 	@TableGenerator(name="BackOrderSeq", table="IDGENERATOR", pkColumnName="IDNAME", 
-			pkColumnValue="BACKORDER", valueColumnName="IDVALUE")
+			pkColumnValue="BACKORDER", valueColumnName="IDVALUE",schema = "APP")
 	private long backOrderID;
 	private int quantity;
 	private String status;
