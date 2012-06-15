@@ -382,6 +382,8 @@ public class ShoppingCartBean implements ShoppingCart
 		
 		//em.getTransaction().begin();
 		em.persist(order);
+		
+		System.out.println("Order persist success!");
 		em.flush();
 		//em.getTransaction().commit();
 		
