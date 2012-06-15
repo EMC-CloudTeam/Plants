@@ -25,7 +25,15 @@
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
     </bean>
-
+	<bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+            	<entry key="session">
+                	<bean class="org.springframework.context.support.SimpleThreadScope"/>
+            	</entry>
+       		</map>
+        </property>
+    </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
