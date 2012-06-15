@@ -1,4 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false" %>
+
+
 
 <!-- 
 "This sample program is provided AS IS and may be used, executed, copied and modified without royalty payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to run with an IBM WebSphere product, either for customer's own internal use or for redistribution by customer, as part of such an application, in customer's own products."
@@ -38,16 +42,17 @@ function verifyFields(signinForm)
 <%
 	String servletParm = "updating=false";
   String updating = (String) request.getAttribute(com.emc.plants.utils.Util.ATTR_UPDATING);
+  System.out.println("login.jsp :: updating - "+servletParm);
   if ((updating != null) && (updating == "true"))
   {
      servletParm = "updating=true";
   }
 %>  
 
-<form onsubmit="return verifyFields(this);" target="_self" name="signinForm" method="post" action="/plants-web/servlet/AccountServlet?action=login&<%=servletParm%>">
+<form onsubmit="return verifyFields(this);" target="_self" name="signinForm" method="POST" action="/plants-web/login?<%=servletParm%>">
 <table border="0" cellpadding="0" cellspacing="5" width="100%">
   <tr>
-    <td><p class="trail"><a class="trail" class="footer" href="/plants-web/promo.html" target="work">Home</a></p></td>
+    <td><p class="trail"><a class="trail" class="footer" href="/plants-web/promo.jsp" target="work">Home</a></p></td>
   </tr>
   <tr>
     <td width="100%">
@@ -82,6 +87,7 @@ function verifyFields(signinForm)
                   <%
                   	String results;
                                        results = (String) request.getAttribute(com.emc.plants.utils.Util.ATTR_RESULTS);
+                                       System.out.println("login.jsp :: results - "+results);
                                        if ( results != null )
                                           out.print(results);
                   %></font>
@@ -131,7 +137,7 @@ function verifyFields(signinForm)
                   <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=3" target="work">Accessories</a><br>
                   <a class="footer" href="/plants-web/index.html" target="_top">Home</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/AccountServlet?action=account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/login.jsp" target="work">Login</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/help.jsp" target="_blank">Help</a></p>
     </td>

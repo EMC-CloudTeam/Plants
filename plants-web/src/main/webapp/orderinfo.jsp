@@ -138,7 +138,7 @@ String[] shippingMethods = com.emc.plants.utils.Util.getFullShippingMethodString
 <form onsubmit="return verifyForm(this);" target="_self" name="billship" method="post" action="/plants-web/servlet/ShoppingServlet?action=orderinfodone">
 <table border="0" cellpadding="0" cellspacing="5" width="100%">
   <tr>
-    <td><p class="trail"><a class="trail" class="footer" href="/plants-web/promo.html" target="work">Home</a> &gt; <a class="trail" class="footer" href="/plants-web/servlet/ShoppingServlet?action=gotocart" target="work">Shopping Cart</a></p></td>
+    <td><p class="trail"><a class="trail" class="footer" href="/plants-web/promo.jsp" target="work">Home</a> &gt; <a class="trail" class="footer" href="/plants-web/servlet/ShoppingServlet?action=gotocart" target="work">Shopping Cart</a></p></td>
   </tr>
   <tr>
     <td width="100%">
@@ -428,7 +428,7 @@ String[] shippingMethods = com.emc.plants.utils.Util.getFullShippingMethodString
                   <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=3" target="work">Accessories</a><br>
                   <a class="footer" href="/plants-web/index.html" target="_top">Home</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/cart.jsp" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/AccountServlet?action=account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/login.jsp" target="work">Login</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/help.jsp" target="_blank">Help</a></p>
     </td>
