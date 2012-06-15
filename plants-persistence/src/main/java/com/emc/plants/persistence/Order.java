@@ -1,7 +1,6 @@
 package com.emc.plants.persistence;
 
 
-import java.math.BigDecimal;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -37,7 +36,7 @@ public class Order
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE,generator="OrderSeq")
 	@TableGenerator(name="OrderSeq", table="IDGENERATOR", pkColumnName="IDNAME", 
-			pkColumnValue="ORDER", valueColumnName="IDVALUE")
+			pkColumnValue="ORDER", valueColumnName="IDVALUE", schema="APP")
 	private long orderID;
 	private String sellDate;
 	private String billName;
