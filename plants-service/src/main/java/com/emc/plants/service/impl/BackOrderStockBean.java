@@ -38,7 +38,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * Method receiveConfirmation.
 	 * @param backOrderID
 	 */
-	public int receiveConfirmation(String backOrderID)
+	public int receiveConfirmation(long backOrderID)
 	{
 		int rc = 0;
 		BackOrder backOrder;
@@ -66,7 +66,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * @param backOrderID
 	 * @param quantity
 	 */
-	public void orderStock(String backOrderID, int quantity)
+	public void orderStock(long backOrderID, int quantity)
 	{
 		this.setBackOrderStatus(backOrderID, Util.STATUS_ORDEREDSTOCK);
 		this.setBackOrderQuantity(backOrderID, quantity);
@@ -77,14 +77,14 @@ public class BackOrderStockBean implements BackOrderStock
 	 * @param backOrderID
 	 * @param quantity
 	 */
-	public void updateStock(String backOrderID, int quantity)
+	public void updateStock(long backOrderID, int quantity)
 	{
 		this.setBackOrderStatus(backOrderID, Util.STATUS_ADDEDSTOCK);
 	}
 	/**
 	 * @param backOrderID
 	 */
-	public void abortorderStock(String backOrderID)
+	public void abortorderStock(long backOrderID)
 	{
 		Util.debug("backOrderStockBean.abortorderStock() - Aborting orderStock transation for backorderID: " + backOrderID);
 		// Reset the back order status since the order failed.
@@ -95,9 +95,9 @@ public class BackOrderStockBean implements BackOrderStock
 	 * @param backOrderID
 	 * @return String
 	 */
-	public String getBackOrderID(String backOrderID)
+	public long getBackOrderID(long backOrderID)
 	{
-		String retbackOrderID = "";
+		long retbackOrderID = 0;
 		/*
 		 try
 		 { */
@@ -119,7 +119,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * @param backOrderID
 	 * @return String
 	 */
-	public String getBackOrderInventoryID(String backOrderID)
+	public String getBackOrderInventoryID(long backOrderID)
 	{
 		String retinventoryID = "";
 		
@@ -135,7 +135,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * @param backOrderID
 	 * @return String
 	 */
-	public String getSupplierOrderID(String backOrderID)
+	public String getSupplierOrderID(long backOrderID)
 	{
 		String supplierOrderID = "";
 		/*
@@ -158,7 +158,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * @param backOrderID
 	 * @return int
 	 */
-	public int getBackOrderQuantity(String backOrderID)
+	public int getBackOrderQuantity(long backOrderID)
 	{
 		int backOrderQuantity = -1;
 		/*
@@ -181,7 +181,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * @param backOrderID
 	 * @return String
 	 */
-	public String getBackOrderStatus(String backOrderID)
+	public String getBackOrderStatus(long backOrderID)
 	{
 		String backOrderStatus = "";
 		/*
@@ -204,7 +204,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * @param backOrderID
 	 * @param supplierOrderID
 	 */
-	public void setSupplierOrderID(String backOrderID, String supplierOrderID)
+	public void setSupplierOrderID(long backOrderID, String supplierOrderID)
 	{
 		/*
 		 try
@@ -226,7 +226,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * @param backOrderID
 	 * @param quantity
 	 */
-	public void setBackOrderQuantity(String backOrderID, int quantity)
+	public void setBackOrderQuantity(long backOrderID, int quantity)
 	{
 		/*
 		 try
@@ -248,7 +248,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * @param backOrderID
 	 * @param Status
 	 */
-	public void setBackOrderStatus(String backOrderID, String Status)
+	public void setBackOrderStatus(long backOrderID, String Status)
 	{
 		/*
 		 try
@@ -269,7 +269,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * Method setBackOrderOrderDate.
 	 * @param backOrderID
 	 */
-	public void setBackOrderOrderDate(String backOrderID)
+	public void setBackOrderOrderDate(long backOrderID)
 	{
 		/*
 		 try
@@ -290,7 +290,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * Method deleteBackOrder.
 	 * @param backOrderID
 	 */
-	public void deleteBackOrder(String backOrderID)
+	public void deleteBackOrder(long backOrderID)
 	{
 		/*
 		 try
@@ -311,7 +311,7 @@ public class BackOrderStockBean implements BackOrderStock
 	 * @param backOrderID
 	 * @return BackOrderItem
 	 */
-	public BackOrderItem findByID(String backOrderID)
+	public BackOrderItem findByID(long backOrderID)
 	{
 		BackOrderItem backOrderItem = null;
 		/*

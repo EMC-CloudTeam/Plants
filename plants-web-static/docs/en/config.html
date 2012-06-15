@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!--
+"This sample program is provided AS IS and may be used, executed, copied and modified without royalty payment by customer (a) for its own
+instruction and study, (b) in order to develop applications designed to run with an IBM WebSphere product, either for customer's own internal use
+or for redistribution by customer, as part of such an application, in customer's own products."
+
+Product 5630-A36,  (C) COPYRIGHT International Business Machines Corp., 2003, 2004
+All Rights Reserved * Licensed Materials - Property of IBM
+-->
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>Configuring and running the Plants by WebSphere Sample</title>
+    <script language="JavaScript" src="/docs/scripts/browserStyle.js"></script>
+
+</head>
+
+<body class="sampcont">
+<table width="80%" border="0" cellpadding="0" cellspacing="0" class="sampnav">
+    <tbody><tr>
+        <td align="LEFT" valign="TOP" colspan="2" class="breadcrumb">Plants by WebSphere</td>
+    </tr>
+    </tbody></table>
+
+<br>
+<table width="80%" border="0" cellpadding="0" cellspacing="0" class="sampnav">
+    <tr>
+        <td align="LEFT" valign="TOP">
+            <h1 class="samp"><img src="/docs/images/pbw_sm.gif" width="16" height="14" border="0" alt="">
+                Configuring and running the Plants by WebSphere Sample <img src="/docs/images/clearPixel.gif" width="1" height="1" border="0" alt="">
+            </h1>
+        </td>
+    </tr>
+    <tr>
+        <td><img src="/docs/images/5pixclr.gif" width="10" height="10" border="0" alt=""></td>
+    </tr>
+    <tr>
+        <td colspan=2 class="submenu"><strong><a class="submenu" href="/plants-web/" target="_blank">Run </a>&nbsp;&nbsp;
+            | &nbsp;&nbsp; <a class="activesubmenu" href="config.html">Configure</a>&nbsp;&nbsp;
+            | &nbsp;&nbsp; <a class="submenu" href="techNotes.html">Technotes</a>&nbsp;&nbsp;
+            | &nbsp;&nbsp; <a class="submenu" href="/plants-web/" target="_blank">Javadoc</a>&nbsp;&nbsp;
+            | &nbsp;&nbsp; <a class="submenu" href="buildit.html"> Build with Ant</a>
+        </strong></td>
+    </tr>
+</table>
+
+<br>
+<br>
+<table width="50%" border="0" cellspacing="0" cellpadding="0"
+       class="sampnav">
+    <tr>
+        <td class="sampnav"><a href="#1">Configuring security (optional)</a></td>
+    </tr>
+    <tr>
+        <td class="sampnav"><a href="#2">Configuring mail resources (optional)</a></td>
+    </tr>
+    </tbody></table>
+
+<h2><a name="1" class="sampnav">Configuring security (optional)</a></h2>
+<p>If you do not want to use the Plants by WebSphere Sample with
+    security, you can skip this section.</p>
+
+<p>
+    <img alt="Important Information" src="/WSsamples/images/takeNote.gif" width=13 height=13>
+    Do not complete this section if you are configuring the Plants by WebSphere
+    Sample to run in WebSphere Studio Application Developer.</p>
+
+<p>Click
+    <script type="text/javascript">
+        document.write('<a href=\"/WSsamples/' + browserLocale + '/securityConfig.html\">');
+    </script>
+    here
+    <script type="text/javascript">
+        document.write('<\/a>');
+    </script>
+    to configure global security.
+</p>
+
+
+<h2><a name="2" class="sampnav">Configuring mail resources (optional)</a></h2>
+
+<p>Plants by WebSphere can be configured to send an order confirmation e-mail.
+    A mail provider for the Plants by WebSphere Sample may have already been created during installation,
+    and can be further configured.
+    If you do not want to send an order confirmation e-mail,
+    skip this section. Follow these steps to configure mail resources:</p>
+<br>
+<ol>
+    <li>In the Integrated Solutions Console, click <strong>Resources &gt; Mail &gt; Mail
+        Providers &gt; (set scope to Node &lt;<i>node</i>&gt;) &gt; Built-in Mail Provider &gt;
+        Mail Sessions</strong>.</li>
+    <li>Click <strong>New</strong> to create a new mail session, or if the PlantsByWebSphere Mail Session already exists, click to edit it.</li>
+    <li>Enter <samp>PlantsByWebSphere mail session</samp> in the Name
+        field.</li>
+    <li>Enter <samp>mail/PlantsByWebSphere</samp> in the JNDI Name field.</li>
+    <li>In the Outgoing Mail Properties section, enter a value, such as <samp>yourcompany.com</samp>, in the Server field.
+    <li>Optionally, in the Outgoing Mail Properties section, enter values in the User and Password fields if required by your server.</li>
+
+    <li>In the Outgoing Mail Properties section, enter a value, such as <samp>userid@yourcompany.com</samp> in the
+        Return e-mail address field.</li>
+    <li>Click <strong>OK</strong>.</li>
+    <li>Click <strong>Save</strong> at the top of the main panel in the
+        administrative console.</li>
+
+    <li>Restart WebSphere Application Server so that all configuration changes are applied.</li>
+</ol>
+
+<p>Mail resources for the Plants by WebSphere Sample are now configured.</p>
+
+</body>
+</html>

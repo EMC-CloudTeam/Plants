@@ -23,7 +23,7 @@ public class BackOrderItem implements java.io.Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-private String backOrderID;
+private long backOrderID;
    private String name;
    private int quantity;
    private int inventoryQuantity;
@@ -48,7 +48,7 @@ private String backOrderID;
     * @param quantity
     * @param status
     */
-   public BackOrderItem(String backOrderID, Inventory inventoryID, String name, int quantity, String status)
+   public BackOrderItem(long backOrderID, Inventory inventoryID, String name, int quantity, String status)
    {
       this.backOrderID = backOrderID;
       this.inventory = inventoryID;
@@ -81,7 +81,7 @@ private String backOrderID;
     * Method getBackOrderID.
     * @return String
     */
-   public String getBackOrderID()
+   public long getBackOrderID()
    {
       return backOrderID;
    }
@@ -89,7 +89,7 @@ private String backOrderID;
     * Method setBackOrderID.
     * @param backOrderID
     */
-   public void setBackOrderID(String backOrderID)
+   public void setBackOrderID(long backOrderID)
    {
       this.backOrderID = backOrderID;
    }

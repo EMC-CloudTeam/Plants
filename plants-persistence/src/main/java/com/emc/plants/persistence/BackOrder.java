@@ -42,7 +42,7 @@ public class BackOrder
 	@GeneratedValue(strategy=GenerationType.TABLE, generator="BackOrderSeq")
 	@TableGenerator(name="BackOrderSeq", table="IDGENERATOR", pkColumnName="IDNAME", 
 			pkColumnValue="BACKORDER", valueColumnName="IDVALUE")
-	private String backOrderID;
+	private long backOrderID;
 	private int quantity;
 	private String status;
 	private long lowDate;
@@ -55,7 +55,7 @@ public class BackOrder
 	private Inventory inventory;
 	
 	public BackOrder() {} 
-	public BackOrder(String backOrderID)
+	public BackOrder(long backOrderID)
 	{
 		setBackOrderID(backOrderID);
 	}
@@ -82,10 +82,10 @@ public class BackOrder
 		}
 	}
 	
-	public String getBackOrderID() {
+	public long getBackOrderID() {
 		return backOrderID;
 	}
-	public void setBackOrderID(String backOrderID) {
+	public void setBackOrderID(long backOrderID) {
 		this.backOrderID = backOrderID;
 	}
 	public long getLowDate() {

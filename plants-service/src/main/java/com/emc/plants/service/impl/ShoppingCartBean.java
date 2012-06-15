@@ -18,6 +18,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.emc.plants.persistence.BackOrder;
 import com.emc.plants.persistence.Customer;
@@ -41,17 +42,24 @@ import com.emc.plants.utils.Util;
 //@Stateful(name="ShoppingCart")
 @Repository("shopping")
 @Scope(value="session")
+@Transactional
 public class ShoppingCartBean implements ShoppingCart
 {
 
-	@Autowired
-	private EntityManagerFactory entityManagerFactory;
+	/*@Autowired
+	private EntityManagerFactory entityManagerFactory;*/
+	
+	private EntityManager em;
 	
 	
-
-	public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
-		this.entityManagerFactory =entityManagerFactory;
+	@PersistenceContext(unitName="PBW")
+	public void setEntityManager(EntityManager entityManager) {
+		this.em = entityManager;
 	}
+
+	/*public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+		this.entityManagerFactory =entityManagerFactory;
+	}*/
 	
 	private ArrayList<ShoppingCartItem> items = new ArrayList<ShoppingCartItem>();
 	
@@ -75,7 +83,7 @@ public class ShoppingCartBean implements ShoppingCart
 		 Util.debug("ShoppingCartBean.getInventoryItem() - Exception: " + e);
 		 }
 		 */
-		EntityManager em = entityManagerFactory.createEntityManager();
+		//EntityManager em = entityManagerFactory.createEntityManager();
 		inv = em.find(Inventory.class, inventoryID);
 		return inv;
 	}
@@ -86,7 +94,7 @@ public class ShoppingCartBean implements ShoppingCart
 	 */
 	public void setCartContents(ShoppingCartContents cartContents)
 	{
-		EntityManager em = entityManagerFactory.createEntityManager();
+		//EntityManager em = entityManagerFactory.createEntityManager();
 		items = new ArrayList<ShoppingCartItem>();
 		int qty;
 		String inventoryID;
@@ -243,18 +251,21 @@ public class ShoppingCartBean implements ShoppingCart
 	 */
 	private void backOrder(Inventory inv, int amountToOrder)
 	{
-		EntityManager em = entityManagerFactory.createEntityManager();
-		BackOrder b=em.find(BackOrder.class, inv.getInventoryId());
+		//EntityManager em = entityManagerFactory.createEntityManager();
+	//	BackOrder b=em.find(BackOrder.class, inv.getBackOrder().getBackOrderID());
+        BackOrder b = inv.getBackOrder() ;
 		if (b == null) {
 			//create a new backorder if none exists
 			BackOrder newBO=new BackOrder(inv, amountToOrder);
+            System.out.println("coming to back order 1");
 			em.persist(newBO);
 			em.flush();
 			inv.setBackOrder(newBO);
 		} else {
 			//update the backorder with the new quantity			
 			int quantity=b.getQuantity();
-			quantity+=amountToOrder;			
+			quantity+=amountToOrder;
+            System.out.println("coming to back order 11");
 			em.lock(b, LockModeType.WRITE);
 			em.refresh(b);
 			b.setQuantity(quantity);
@@ -320,6 +331,7 @@ public class ShoppingCartBean implements ShoppingCart
 	 * @param items vector of StoreItems ordered
 	 * @return OrderInfo
 	 */
+	@Transactional
 	public OrderInfo createOrder(
 			String customerID,
 			String billName,
@@ -355,7 +367,7 @@ public class ShoppingCartBean implements ShoppingCart
 		 ccNum, ccExpireMonth, ccExpireYear, cardHolder, shippingMethod, items);
 		 */
 		Collection<OrderItem> orderitems = new ArrayList<OrderItem>();
-		EntityManager em = entityManagerFactory.createEntityManager();
+		//EntityManager em = entityManagerFactory.createEntityManager();
 		for (Object o : items) {
 			ShoppingCartItem si = (ShoppingCartItem) o;
 			Inventory inv = em.find(Inventory.class, si.getID());
@@ -368,17 +380,27 @@ public class ShoppingCartBean implements ShoppingCart
 				shipName, shipAddr1, shipAddr2, shipCity, shipState, shipZip, shipPhone, creditCard,
 				ccNum, ccExpireMonth, ccExpireYear, cardHolder, shippingMethod, orderitems);	
 		
-		em.getTransaction().begin();
+		//em.getTransaction().begin();
 		em.persist(order);
-		em.flush();  
+		
+		System.out.println("Order persist success!");
+		em.flush();
+		//em.getTransaction().commit();
+		
+		//em.getTransaction().begin();
 		//store the order items
 		for (OrderItem o : orderitems) {
 			o.setOrder(order);
+
+			
+			System.out.println("OrderID :: " + order.getOrderID());
+
 			o.updatePK(o.getInventory().getInventoryId());
 			em.persist(o);
 		}
 		em.flush();
-		em.getTransaction().commit();
+		//em.getTransaction().commit();
+
 		OrderInfo orderInfo=new OrderInfo(order);
 		/*
 		 }

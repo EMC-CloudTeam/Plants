@@ -68,7 +68,7 @@ public class ReceiveOrdersJAXRPCProxy {
      * @return supplierOrderID
      * @throws Exception
      */
-    public String sendOrder(java.lang.String customerID, java.lang.String backOrderID, java.lang.String inventoryID, int quantity) throws Exception {
+    public String sendOrder(java.lang.String customerID, long backOrderID, java.lang.String inventoryID, int quantity) throws Exception {
         String trackNum = "0";
         try {
             InitialContext ctx = new InitialContext();
