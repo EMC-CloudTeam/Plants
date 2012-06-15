@@ -252,17 +252,20 @@ public class ShoppingCartBean implements ShoppingCart
 	private void backOrder(Inventory inv, int amountToOrder)
 	{
 		//EntityManager em = entityManagerFactory.createEntityManager();
-		BackOrder b=em.find(BackOrder.class, inv.getInventoryId());
+	//	BackOrder b=em.find(BackOrder.class, inv.getBackOrder().getBackOrderID());
+        BackOrder b = inv.getBackOrder() ;
 		if (b == null) {
 			//create a new backorder if none exists
 			BackOrder newBO=new BackOrder(inv, amountToOrder);
+            System.out.println("coming to back order 1");
 			em.persist(newBO);
 			em.flush();
 			inv.setBackOrder(newBO);
 		} else {
 			//update the backorder with the new quantity			
 			int quantity=b.getQuantity();
-			quantity+=amountToOrder;			
+			quantity+=amountToOrder;
+            System.out.println("coming to back order 11");
 			em.lock(b, LockModeType.WRITE);
 			em.refresh(b);
 			b.setQuantity(quantity);

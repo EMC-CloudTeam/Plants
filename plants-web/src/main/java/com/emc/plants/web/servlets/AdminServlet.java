@@ -203,7 +203,7 @@ public class AdminServlet extends HttpServlet {
             String[] backOrderIDs = (String[]) req.getParameterValues("selectedObjectIds");
             if (backOrderIDs != null) {
                 for (int i = 0; i < backOrderIDs.length; i++) {
-                    String backOrderID = backOrderIDs[i];
+                    long backOrderID = Long.parseLong(backOrderIDs[i]);
                     Util.debug("AdminServlet.performBackOrder() - Selected BackOrder backOrderID: " + backOrderID);
                     try {
                         String inventoryID = backOrderStock.getBackOrderInventoryID(backOrderID);
@@ -254,10 +254,10 @@ public class AdminServlet extends HttpServlet {
         } else if (action.equals(Util.ACTION_ORDERSTATUS)) {
             // Check the order status from the Supplier.
             Util.debug("AdminServlet.performBackOrder() - AdminServlet(performTask):  Order Status Action");
-            String[] backOrderIDs = (String[]) req.getParameterValues("selectedObjectIds");
+            String[] backOrderIDs =  req.getParameterValues("selectedObjectIds");
             if (backOrderIDs != null) {
                 for (int i = 0; i < backOrderIDs.length; i++) {
-                    String backOrderID = backOrderIDs[i];
+                    long backOrderID = Long.parseLong(backOrderIDs[i]);
                     Util.debug("AdminServlet.performBackOrder() - Selected BackOrder backOrderID: " + backOrderID);
                     try {
                         String trackNum = backOrderStock.getSupplierOrderID(backOrderID);
@@ -279,7 +279,7 @@ public class AdminServlet extends HttpServlet {
             String[] backOrderIDs = (String[]) req.getParameterValues("selectedObjectIds");
             if (backOrderIDs != null) {
                 for (int i = 0; i < backOrderIDs.length; i++) {
-                    String backOrderID = backOrderIDs[i];
+                    long backOrderID = Long.parseLong(backOrderIDs[i]);
                     Util.debug("AdminServlet.performBackOrder() - Selected BackOrder backOrderID: " + backOrderID);
                     try {
                         String inventoryID = backOrderStock.getBackOrderInventoryID(backOrderID);
@@ -301,9 +301,10 @@ public class AdminServlet extends HttpServlet {
         } else if (action.equals(Util.ACTION_CANCEL)) {
             Util.debug("AdminServlet.performBackOrder() - AdminServlet(performTask):  Cancel Action");
             String[] backOrderIDs = (String[]) req.getParameterValues("selectedObjectIds");
+            
             if (backOrderIDs != null) {
                 for (int i = 0; i < backOrderIDs.length; i++) {
-                    String backOrderID = backOrderIDs[i];
+                    long backOrderID = Long.parseLong(backOrderIDs[i]);
                     Util.debug("AdminServlet.performBackOrder() - Selected BackOrder backOrderID: " + backOrderID);
                     try {
                         backOrderStock.deleteBackOrder(backOrderID);
@@ -318,8 +319,9 @@ public class AdminServlet extends HttpServlet {
         } else if (action.equals(Util.ACTION_UPDATEQUANTITY)) {
             Util.debug("AdminServlet.performBackOrder() -  Update Quantity Action");
             try {
-                String backOrderID = req.getParameter("backOrderID");
-                if (backOrderID != null) {
+                String backOrderIDs = req.getParameter("backOrderID");
+                if (backOrderIDs != null) {
+                    long backOrderID = Long.parseLong(backOrderIDs);
                     Util.debug("AdminServlet.performBackOrder() - backOrderID = " + backOrderID);
                     String paramquantity = req.getParameter("itemqty");
                     if (paramquantity != null) {
@@ -353,7 +355,7 @@ public class AdminServlet extends HttpServlet {
                 Iterator i = backOrderItems.iterator();
                 while (i.hasNext()) {
                     BackOrderItem backOrderItem = (BackOrderItem) i.next();
-                    String backOrderID = backOrderItem.getBackOrderID();
+                    long backOrderID = backOrderItem.getBackOrderID();
                     String inventoryID = backOrderItem.getInventory().getInventoryId();
                     // Get the inventory quantity and name for the back order item information.
                     Inventory item = catalog.getItemInventory(inventoryID);
@@ -394,7 +396,7 @@ public class AdminServlet extends HttpServlet {
      * @param amountToOrder
      * @returns orderID
      */
-    private String purchaseInventory(String backOrderID, String invID, int amountToOrder) throws NoSupplierException {
+    private String purchaseInventory(long backOrderID, String invID, int amountToOrder) throws NoSupplierException {
         String customerID = "PBW0001";
         String trackNum = "0" ;
         try {

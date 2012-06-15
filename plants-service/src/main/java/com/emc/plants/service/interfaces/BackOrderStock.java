@@ -24,42 +24,42 @@ public interface BackOrderStock
     * Method receiveConfirmation.
     * @param backOrderID
     */
-   public int receiveConfirmation(String backOrderID);
+   public int receiveConfirmation(long backOrderID);
    /**
     * Method orderStock.
     * @param backOrderID
     * @param quantity
     */
-   public void orderStock(String backOrderID, int quantity);
+   public void orderStock(long backOrderID, int quantity);
    /**
     * Method updateStock.
     * @param backOrderID
     * @param quantity
     */
-   public void updateStock(String backOrderID, int quantity);
+   public void updateStock(long backOrderID, int quantity);
    /**
     * @param backOrderID
     */
-   public void abortorderStock(String backOrderID);
+   public void abortorderStock(long backOrderID);
    /**
     * Method getBackOrderID.
     * @param backOrderID
     * @return String
     */
-   public String getBackOrderID(java.lang.String backOrderID);
+   public long getBackOrderID(long backOrderID);
    /**
     * Method getBackOrderInventoryID.
     * @param backOrderID
     * @return String
     * @throws RemoteException
     */
-   public String getBackOrderInventoryID(String backOrderID);
+   public String getBackOrderInventoryID(long backOrderID);
    /**
     * Method getSupplierOrderID.
     * @param backOrderID
     * @return String
     */
-   public String getSupplierOrderID(String backOrderID);
+   public String getSupplierOrderID(long backOrderID);
    /**
     * Method getBackOrderQuantity.
     * @param backOrderID
@@ -68,13 +68,13 @@ public interface BackOrderStock
    /**
     * getBackOrderQuantity
     */
-   public int getBackOrderQuantity(java.lang.String backOrderID);
+   public int getBackOrderQuantity(long backOrderID);
    /**
     * Method setSupplierOrderID.
     * @param backOrderID
     * @param supplierOrderID
     */
-   public void setSupplierOrderID(String backOrderID, String supplierOrderID);
+   public void setSupplierOrderID(long backOrderID, String supplierOrderID);
    /**
     * Method setBackOrderQuantity.
     * @param backOrderID
@@ -83,7 +83,7 @@ public interface BackOrderStock
    /**
     * setBackOrderQuantity
     */
-   public void setBackOrderQuantity(java.lang.String backOrderID, int quantity);
+   public void setBackOrderQuantity(long backOrderID, int quantity);
    /**
     * Method getBackOrderStatus.
     * @param backOrderID
@@ -92,7 +92,7 @@ public interface BackOrderStock
    /**
     * getBackOrderStatus
     */
-   public String getBackOrderStatus(java.lang.String backOrderID);
+   public String getBackOrderStatus(long backOrderID);
    /**
     * Method setBackOrderStatus.
     * @param backOrderID
@@ -101,12 +101,12 @@ public interface BackOrderStock
    /**
     * setBackOrderStatus
     */
-   public void setBackOrderStatus(java.lang.String backOrderID, java.lang.String Status);
+   public void setBackOrderStatus(long backOrderID, java.lang.String Status);
    /**
     * Method setBackOrderOrderDate.
     * @param backOrderID
     */
-   public void setBackOrderOrderDate(String backOrderID);
+   public void setBackOrderOrderDate(long backOrderID);
    /**
     * Method deleteBackOrder.
     * @param backOrderID
@@ -114,7 +114,7 @@ public interface BackOrderStock
    /**
     * deleteBackOrder
     */
-   public void deleteBackOrder(java.lang.String backOrderID);
+   public void deleteBackOrder(long backOrderID);
    /**
     * Method createBackOrder.
     * @param inventoryID
@@ -132,5 +132,5 @@ public interface BackOrderStock
     * @param backOrderID
     * @return BackOrderItem
     */
-   public BackOrderItem findByID(String backOrderID);
+   public BackOrderItem findByID(long backOrderID);
 }

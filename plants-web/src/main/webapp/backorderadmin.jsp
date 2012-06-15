@@ -172,7 +172,7 @@ function verifyQty(theForm, orderID)
 	                     String status = backOrderItem.getStatus();
 	                     if (status.equals(Util.STATUS_ORDERSTOCK))
 	                     {
-                                 String backOrderID = backOrderItem.getBackOrderID();
+                                 long backOrderID = backOrderItem.getBackOrderID();
                                  String invID = backOrderItem.getInventory().getInventoryId();
                                  String name = backOrderItem.getName();
                                  int quantity = backOrderItem.getQuantity();
@@ -285,7 +285,7 @@ function verifyQty(theForm, orderID)
                               String status = backOrderItem.getStatus();
                               if (status.equals(Util.STATUS_ORDEREDSTOCK))
                               {
-                                 String backOrderID = backOrderItem.getBackOrderID();
+                                 long backOrderID = backOrderItem.getBackOrderID();
                                  String supplierOrderID = backOrderItem.getSupplierOrderID();
                                  String invID = backOrderItem.getInventory().getInventoryId();
                                  String name = backOrderItem.getName();
@@ -395,7 +395,7 @@ function verifyQty(theForm, orderID)
                                  String status = backOrderItem.getStatus();
                                  if (status.equals(Util.STATUS_RECEIVEDSTOCK))
                                  {
-                                    String backOrderID = backOrderItem.getBackOrderID();
+                                    long backOrderID = backOrderItem.getBackOrderID();
                                     String supplierOrderID = backOrderItem.getSupplierOrderID();
                                     String invID = backOrderItem.getInventory().getInventoryId();
                                     String name = backOrderItem.getName();

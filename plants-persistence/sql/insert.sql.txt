@@ -278,7 +278,7 @@ insert into supplier values('Supplier001','Greenhouse By WebSphere','4205 Miami 
 
 
 /* INSERT statements for backorder table*/
-insert into backorder values('V0007', '150', 200, 'Pending',123456789, 123456789,'');
+insert into backorder values(1, '150', 200, 'Pending',123456789, 123456789,'');
 
 
 /* INSERT statement for customer table*/
