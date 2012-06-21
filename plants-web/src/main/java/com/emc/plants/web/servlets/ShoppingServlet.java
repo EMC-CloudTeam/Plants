@@ -23,6 +23,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.emc.plants.messaging.publisher.PaymentInfoPublisher;
 import com.emc.plants.persistence.Inventory;
 import com.emc.plants.pojo.beans.CustomerInfo;
 import com.emc.plants.pojo.beans.OrderInfo;
@@ -437,7 +438,19 @@ public class ShoppingServlet extends HttpServlet
 					Util.debug("ShoppingCart.checkInventory() - checking Inventory quantity of item: " + si.getID());
 				}
 			}
+
 			
+			try
+			{
+				PaymentInfoPublisher pInfoPublisher = (PaymentInfoPublisher)Util.getSpringBean("paymentInfoPublisher");
+				
+				pInfoPublisher.publishMessage("Order placed successfully for Customer : " +customerInfo.getCustomerID()+" with Order ID : "+orderKey);
+			}
+			catch (Exception e)
+			{
+				System.out.println("Exception during Posting message to RabbitMQ :"+e);
+				e.printStackTrace();
+			}
 			
 			try
 			{
