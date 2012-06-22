@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +46,8 @@ import com.emc.plants.utils.Util;
 public class ShoppingCartBean implements ShoppingCart
 {
 
+	final Logger logger = LoggerFactory.getLogger(ShoppingCartBean.class);
+	
 	/*@Autowired
 	private EntityManagerFactory entityManagerFactory;*/
 	
@@ -85,6 +87,7 @@ public class ShoppingCartBean implements ShoppingCart
 		 */
 		//EntityManager em = entityManagerFactory.createEntityManager();
 		inv = em.find(Inventory.class, inventoryID);
+		logger.debug("getInventoryItem() ended successfully .. ");
 		return inv;
 	}
 	/**
@@ -95,6 +98,7 @@ public class ShoppingCartBean implements ShoppingCart
 	public void setCartContents(ShoppingCartContents cartContents)
 	{
 		//EntityManager em = entityManagerFactory.createEntityManager();
+		logger.debug("setCartContents() started execution .. ");
 		items = new ArrayList<ShoppingCartItem>();
 		int qty;
 		String inventoryID;
@@ -118,6 +122,8 @@ public class ShoppingCartBean implements ShoppingCart
 			/* }
 			 */
 		}
+		
+		logger.debug("setCartContents() ended execution .. ");
 	}
 	
 	/** 
@@ -127,6 +133,7 @@ public class ShoppingCartBean implements ShoppingCart
 	 */
 	public void addItem(ShoppingCartItem new_item)
 	{
+		logger.debug("addItem() started execution .. ");
 		boolean added = false;
 		ShoppingCartItem old_item;
 		// If the same item is already in the cart, just increase the quantity.
@@ -143,6 +150,8 @@ public class ShoppingCartBean implements ShoppingCart
 		// Add this item to shopping cart, if it is a brand new item.
 		if (!added)
 			items.add(new_item);
+		
+		logger.debug("addItem() ended execution .. ");
 	}
 	/** 
 	 * Remove an item from the cart.
@@ -166,7 +175,7 @@ public class ShoppingCartBean implements ShoppingCart
 	 *
 	 * @return A Collection of ShoppingCartItems.
 	 */
-	public Collection <ShoppingCartItem>getItems()
+	public Collection<ShoppingCartItem> getItems()
 	{
 		return items;
 	}

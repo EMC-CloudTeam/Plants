@@ -16,6 +16,8 @@
     <context:component-scan base-package="com.emc.plants.service.impl"></context:component-scan>
 
 	<import resource="classpath:persistence-context.xml"/>
+	
+	<import resource="classpath:messaging-context.xml"/>
 
 <!--  <bean id="myEmf" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
       <property name="persistenceUnitName" value="PBW"/>

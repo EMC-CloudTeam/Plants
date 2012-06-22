@@ -7,33 +7,36 @@
   		<artifactId>plants</artifactId>
   		<version>1.0.0</version>
 	</parent>
-  <groupId>com.emc.plants.web</groupId>
-  <artifactId>plants-web</artifactId>
-  <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
+	<groupId>com.emc.plants.web</groupId>
+	<artifactId>plants-web</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
   
   
   <name>Plants Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
-   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-     <org.springframework.version>3.0.5.RELEASE</org.springframework.version>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+	</properties>
   
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+	<dependencies>
+	
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>3.8.1</version>
+		<scope>test</scope>
     </dependency>
+    
     <!-- For javax.xml.rpc -->
     <dependency>
-	<groupId>org.glassfish.main.javaee-api</groupId>
-	<artifactId>javax.xml.rpc</artifactId>
-	<version>3.1.2</version>
+		<groupId>org.glassfish.main.javaee-api</groupId>
+		<artifactId>javax.xml.rpc</artifactId>
+		<version>3.1.2</version>
 	</dependency>
+	
 	<!-- Servlet API -->
 	<dependency>
 		<groupId>org.apache.tomcat</groupId>
@@ -54,17 +57,28 @@
   		<artifactId>plants-persistence</artifactId>
   		<version>1.0-SNAPSHOT</version>
 	</dependency> 
-
+	
+	<dependency>
+		<groupId>com.emc.plants.messaging</groupId>
+  		<artifactId>plants-messaging</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+	</dependency> 
+	
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+		<version>1.5.2</version>
+	</dependency>
 
 <!--
     Expression Language (depends on spring-core)
     Define this if you use Spring Expression APIs (org.springframework.expression.*)
 -->
-<dependency>
-  <groupId>org.springframework</groupId>
-  <artifactId>spring-expression</artifactId>
-  <version>${org.springframework.version}</version>
-</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-expression</artifactId>
+		<version>${org.springframework.version}</version>
+	</dependency>
  
 <!--
     Bean Factory and JavaBeans utilities (depends on spring-core)

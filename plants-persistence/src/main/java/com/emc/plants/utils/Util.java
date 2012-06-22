@@ -7,8 +7,12 @@
 // All Rights Reserved * Licensed Materials - Property of IBM
 //
 package com.emc.plants.utils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+
 
 import java.io.FileNotFoundException;
 import java.text.NumberFormat;
@@ -21,6 +25,10 @@ import javax.naming.NamingException;
  *  Utility class.
  */
 public class Util {
+	
+	private final static Logger logger = LoggerFactory.getLogger(Util.class);
+	
+	
     /** Datasource name. */
     public static final String DS_NAME = "java:comp/env/jdbc/PlantsByWebSphereDataSource";
     // Constants for JSPs and HTMLs.
@@ -146,7 +154,7 @@ public class Util {
 
     public static Object getSpringBean(String name){
         if(context==null){
-            context = new ClassPathXmlApplicationContext("app-context-web.xml","persistence-context.xml");
+            context = new ClassPathXmlApplicationContext("app-context-web.xml","persistence-context.xml", "messaging-context.xml");
         }
         return context.getBean(name);
     }
@@ -314,7 +322,8 @@ public class Util {
      */
     static final public void debug(String msg) {
         if (debug) {
-            System.out.println(msg);
+            //System.out.println(msg);
+        	logger.debug(msg);
         }
     }
 
