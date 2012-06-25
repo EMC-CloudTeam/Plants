@@ -34,6 +34,17 @@ import com.emc.plants.web.servlets.ReceiveOrdersJAXRPCProxy;
 public class AdminController {
 	
 	public static Logger logger = Logger.getLogger(AdminController.class);
+	
+	public static final String ADMIN="admin";
+    public static final String BACKORDERADMIN="backorderadmin";
+    public static final String HELP="help";
+    public static final String SUPPLIERCFG="supplierconfig";
+    public static final String CART = "cart";
+	public static final String LOGIN="login";
+	public static final String ORDERINFO="orderinfo";
+	public static final String CHECKOUTFINAL="checkout_final";
+	public static final String ORDERDONE="orderdone";
+	public static final String ATTR_PRODUCT = "product";
 
 	@Autowired
 	private Suppliers suppliers = null;
@@ -140,11 +151,11 @@ public class AdminController {
         } else {
             // Unknown Supplier Config Admin Action so go back to the Administration home page
 //            sendRedirect(resp, "/plants-web/" + Util.PAGE_ADMINHOME);
-            return Util.ADMIN;
+            return ADMIN;
         }
         session.setAttribute(Util.ATTR_SUPPLIER, supplierInfo);
 //        requestDispatch(req.getSession().getServletContext(), req, resp, Util.PAGE_SUPPLIERCFG);
-        return Util.SUPPLIERCFG;
+        return SUPPLIERCFG;
     }
     /**
      * @param req
@@ -157,7 +168,7 @@ public class AdminController {
         Populate popDB = new Populate(resetDB,catalog,login,backOrderStock,suppliers);
         popDB.doPopulate();
 //        sendRedirect(resp, "/plants-web/" + Util.PAGE_HELP);
-        return Util.HELP;
+        return HELP;
     }
 	
 	/**
@@ -178,7 +189,7 @@ public class AdminController {
         if (action.equals(Util.ACTION_GETBACKORDERS)) {
             getBackOrders(session);
             //requestDispatch(req.getSession().getServletContext(), req, resp, Util.PAGE_BACKADMIN);
-            return Util.BACKORDERADMIN;
+            return BACKORDERADMIN;
         } else if (action.equals(Util.ACTION_ORDERSTOCK)) {
             String[] backOrderIDs = (String[]) req.getParameterValues("selectedObjectIds");
             if (backOrderIDs != null) {
@@ -231,7 +242,7 @@ public class AdminController {
             }
             getBackOrders(session);
 //            requestDispatch(req.getSession().getServletContext(), req, resp, Util.PAGE_BACKADMIN);
-            return Util.BACKORDERADMIN;
+            return BACKORDERADMIN;
 
         } else if (action.equals(Util.ACTION_ORDERSTATUS)) {
             // Check the order status from the Supplier.
@@ -256,7 +267,7 @@ public class AdminController {
             }
             getBackOrders(session);
 //            requestDispatch(req.getSession().getServletContext(), req, resp, Util.PAGE_BACKADMIN);
-            return Util.BACKORDERADMIN;
+            return BACKORDERADMIN;
         } else if (action.equals(Util.ACTION_UPDATESTOCK)) {
             logger.debug("AdminController.performBackOrder() - AdminController(performTask):  Update Stock Action");
             String[] backOrderIDs = (String[]) req.getParameterValues("selectedObjectIds");
@@ -281,7 +292,7 @@ public class AdminController {
             }
             getBackOrders(session);
 //            requestDispatch(req.getSession().getServletContext(), req, resp, Util.PAGE_BACKADMIN);
-            return Util.BACKORDERADMIN;
+            return BACKORDERADMIN;
         } else if (action.equals(Util.ACTION_CANCEL)) {
             logger.debug("AdminController.performBackOrder() - AdminController(performTask):  Cancel Action");
             String[] backOrderIDs = (String[]) req.getParameterValues("selectedObjectIds");
@@ -300,7 +311,7 @@ public class AdminController {
             }
             getBackOrders(session);
 //            requestDispatch(req.getSession().getServletContext(), req, resp, Util.PAGE_BACKADMIN);
-            return Util.BACKORDERADMIN;
+            return BACKORDERADMIN;
         } else if (action.equals(Util.ACTION_UPDATEQUANTITY)) {
             logger.debug("AdminController.performBackOrder() -  Update Quantity Action");
             try {
@@ -321,11 +332,11 @@ public class AdminController {
             }
             getBackOrders(session);
 //            requestDispatch(req.getSession().getServletContext(), req, resp, Util.PAGE_BACKADMIN);
-            return Util.BACKORDERADMIN;
+            return BACKORDERADMIN;
         } else {
             // Unknown Backup Admin Action so go back to the Administration home page
 //            sendRedirect(resp, "/plants-web/" + Util.PAGE_ADMINHOME);
-        	return Util.ADMIN;
+        	return ADMIN;
         }
     }
 	
@@ -409,7 +420,7 @@ public class AdminController {
      * Method purchaseInventory.
      * @param invID
      * @param amountToOrder
-     * @returns orderID
+     * @returns orderIDk
      */
 	private String purchaseInventory(long backOrderID, String invID,
 			int amountToOrder) throws NoSupplierException {
