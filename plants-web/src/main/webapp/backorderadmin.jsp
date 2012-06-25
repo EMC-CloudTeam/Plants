@@ -87,7 +87,8 @@ function verifyQty(theForm, orderID)
 	import="com.emc.plants.pojo.beans.BackOrderItem,com.emc.plants.persistence.Inventory,com.emc.plants.utils.Util,java.text.SimpleDateFormat,java.util.*"
 	session="true" isThreadSafe="true" isErrorPage="false"%>
 
-<%Collection backOrderItems = (Collection) session.getAttribute("backorderitems");
+<%
+	Collection backOrderItems = (Collection) session.getAttribute("backorderitems");
 %>
 
 <table border="0" cellpadding="4" cellspacing="0" width="100%">
@@ -95,8 +96,7 @@ function verifyQty(theForm, orderID)
 		<tr>
 			<td class="trail">
 			<p class="trail"><a class="trail" class="footer"
-				href="/plants-web/adminactions.html" target="adminactions">Admin
-			Home</a></p>
+				href="/plants-web/adminactions.html" target="adminactions">Admin  Home</a></p>
 			</td>
 		</tr>
 		<tr>
@@ -123,7 +123,7 @@ function verifyQty(theForm, orderID)
 						<td colspan="3">
 						<p>Here are the inventory items that have been back ordered.
 						<form method="post"
-							action="/plants-web/servlet/AdminServlet"><input
+							action="/plants-web/admin"><input
 							type="submit" name="GetBackOrders" value="Refresh"
 							class="buttons" id="getbackorders"> <input type="hidden"
 							name="admintype" value="backorder"> <input type="hidden"
@@ -149,7 +149,7 @@ function verifyQty(theForm, orderID)
 						<table width="524" border="0" cellpadding="2" cellspacing="10">
 							<tbody>
 								<form onsubmit="return verifyFields(this);" name="order"
-									method="post" action="/plants-web/servlet/AdminServlet">
+									method="post" action="/plants-web/admin">
 								<tr bgcolor="#eeeecc">
 									<th><input type="checkbox" name="allchecked" value="checkall"
 										ONCLICK="updateCheckAll(this.form)"
@@ -258,11 +258,11 @@ function verifyQty(theForm, orderID)
 						<table width="600" border="0" cellpadding="2" cellspacing="10">
 							<tbody>
 								<form name="ordered" method="post"
-									action="/plants-web/servlet/AdminServlet">
+									action="/plants-web/admin">
 								<tr bgcolor="#eeeecc">
 									<th><input type="checkbox" name="allchecked" value="checkall"
-										ONCLICK="updateCheckAll(this.form)"
-										ONKEYPRESS="updateCheckAll(this.form)"></th>
+										onclick="updateCheckAll(this.form)"
+										onkeypress="updateCheckAll(this.form)"></th>
 									<th class="item" align="left" nowrap width="150">BACK ORDER #</th>
 									<th class="item" align="left" nowrap width="150">SUPPLIER ORDER
 									#</th>
@@ -368,7 +368,7 @@ function verifyQty(theForm, orderID)
 						<table width="600" border="0" cellpadding="2" cellspacing="10">
 							<tbody>
 								<form name="received" method="post"
-									action="/plants-web/servlet/AdminServlet">
+									action="/plants-web/admin">
 								<tr bgcolor="#eeeecc">
 									<th><input type="checkbox" name="allchecked" value="checkall"
 										ONCLICK="updateCheckAll(this.form)"

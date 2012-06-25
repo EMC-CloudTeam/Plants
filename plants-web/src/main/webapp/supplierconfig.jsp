@@ -140,7 +140,7 @@ if (supplierInfo != null) {
 			</table>
 			<br>
 			<form onsubmit="return verifyForm(this);" target="_self"
-				name="supplier" action="/plants-web/servlet/AdminServlet"
+				name="supplier" action="/plants-web/admin"
 				method="post">
 			<table border="0" cellpadding="0" cellspacing="0">
 				<caption>Enter the Supplier's Configuration Information</caption>
