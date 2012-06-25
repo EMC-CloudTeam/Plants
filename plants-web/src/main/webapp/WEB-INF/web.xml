@@ -67,6 +67,14 @@
 		</security-role-ref>
 		 -->
 	</servlet>
+	<servlet>
+		<servlet-name>plants-web</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+ 
+	
+	
 	<servlet-mapping id="ServletMapping_1">
 		<servlet-name>AccountServlet</servlet-name>
 		<url-pattern>/servlet/AccountServlet</url-pattern>
@@ -82,6 +90,10 @@
 	<servlet-mapping>
 		<servlet-name>AdminServlet</servlet-name>
 		<url-pattern>/servlet/AdminServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>plants-web</servlet-name>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list id="WelcomeFileList_1">
 		<welcome-file>index.html</welcome-file>

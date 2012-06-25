@@ -44,7 +44,7 @@ String shipMethod = com.emc.plants.utils.Util.getShippingMethod(orderInfo.getShi
 -->
 <table border="0" cellpadding="4" cellspacing="0" width="100%">
   <tr>
-    <td><p class="trail"><a class="trail" class="footer" href="/plants-web/promo.html" target="work">Home</a> &gt; <a class="trail" class="footer" href="/plants-web/cart.jsp" target="work">Shopping Cart</a> &gt; <a class="footer" href="/plants-web/orderinfo.jsp" target="work">Checkout</a><br></td>
+    <td><p class="trail"><a class="trail" class="footer" href="/plants-web/promo.jsp" target="work">Home</a> &gt; <a class="trail" class="footer" href="/plants-web/cart.jsp" target="work">Shopping Cart</a> &gt; <a class="footer" href="/plants-web/orderinfo.jsp" target="work">Checkout</a><br></td>
   </tr>
   <tr>
     <td width="100%">
@@ -238,7 +238,7 @@ String shipMethod = com.emc.plants.utils.Util.getShippingMethod(orderInfo.getShi
                   <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=3" target="work">Accessories</a><br>
                   <a class="footer" href="/plants-web/index.html" target="_top">Home</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/AccountServlet?action=account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/login.jsp" target="work">Login</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/help.jsp" target="_blank">Help</a></p>
     </td>

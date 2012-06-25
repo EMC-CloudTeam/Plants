@@ -160,10 +160,10 @@ if (customerInfo != null)
    }
 }
 %>
-<form onsubmit="return verifyForm(this);" target="_self" name="reginfo" method="POST" action="/plants-web/servlet/AccountServlet?action=<%=formAction%>">
+<form onsubmit="return verifyForm(this);" target="_self" name="reginfo" method="POST" action="/plants-web/register?action=<%=formAction%>">
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td><p class="trail"><a class="trail" class="footer" href="/plants-web/promo.html" target="work">Home</a> &gt; <a class="trail" class="footer" href="/plants-web/login.jsp" target="work">Sign in</a></p></td>
+    <td><p class="trail"><a class="trail" class="footer" href="/plants-web/promo.jsp" target="work">Home</a> &gt; <a class="trail" class="footer" href="/plants-web/login.jsp" target="work">Sign in</a></p></td>
   </tr>
   <tr>
     <td width="100%">
@@ -327,7 +327,7 @@ if (customerInfo != null)
                   <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=3" target="work">Accessories</a><br>
                   <a class="footer" href="/plants-web/index.html" target="_top">Home</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/AccountServlet?action=account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/login.jsp" target="work">Login</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/help.jsp" target="_blank">Help</a></p>
     </td>
