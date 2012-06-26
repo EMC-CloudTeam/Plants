@@ -346,4 +346,19 @@ public class Util {
 		}
 		return true;
 	}
+	
+	public static final String ADMIN="admin";
+    public static final String BACKORDERADMIN="backorderadmin";
+    public static final String HELP="help";
+    public static final String SUPPLIERCFG="supplierconfig";
+	public static final String SHOPPING = "shopping";
+	public static final String PRODUCT = "product";
+	public static final String CART = "cart";
+	public static final String LOGIN="login";
+	public static final String ORDERINFO="orderinfo";
+	public static final String CHECKOUTFINAL="checkout_final";
+	public static final String ORDERDONE="orderdone";
+
+
+	public static final String ATTR_PRODUCT = "product";
 }
