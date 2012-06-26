@@ -96,7 +96,7 @@ function verifyQty(theForm, orderID)
 		<tr>
 			<td class="trail">
 			<p class="trail"><a class="trail" class="footer"
-				href="/plants-web/adminactions.html" target="adminactions">Admin  Home</a></p>
+				href="/plants-web/adminactions.jsp" target="adminactions">Admin  Home</a></p>
 			</td>
 		</tr>
 		<tr>
@@ -122,7 +122,7 @@ function verifyQty(theForm, orderID)
 					<tr>
 						<td colspan="3">
 						<p>Here are the inventory items that have been back ordered.
-						<form method="post"
+						<form method="get"
 							action="/plants-web/admin"><input
 							type="submit" name="GetBackOrders" value="Refresh"
 							class="buttons" id="getbackorders"> <input type="hidden"
@@ -149,7 +149,7 @@ function verifyQty(theForm, orderID)
 						<table width="524" border="0" cellpadding="2" cellspacing="10">
 							<tbody>
 								<form onsubmit="return verifyFields(this);" name="order"
-									method="post" action="/plants-web/admin">
+									method="get" action="/plants-web/admin">
 								<tr bgcolor="#eeeecc">
 									<th><input type="checkbox" name="allchecked" value="checkall"
 										ONCLICK="updateCheckAll(this.form)"
@@ -257,7 +257,7 @@ function verifyQty(theForm, orderID)
 						Status</b> to check the status from the supplier.</p>
 						<table width="600" border="0" cellpadding="2" cellspacing="10">
 							<tbody>
-								<form name="ordered" method="post"
+								<form name="ordered" method="get"
 									action="/plants-web/admin">
 								<tr bgcolor="#eeeecc">
 									<th><input type="checkbox" name="allchecked" value="checkall"
@@ -367,7 +367,7 @@ function verifyQty(theForm, orderID)
 						Stock</b> to add the inventory received from the supplier.</p>
 						<table width="600" border="0" cellpadding="2" cellspacing="10">
 							<tbody>
-								<form name="received" method="post"
+								<form name="received" method="get"
 									action="/plants-web/admin">
 								<tr bgcolor="#eeeecc">
 									<th><input type="checkbox" name="allchecked" value="checkall"
@@ -492,7 +492,7 @@ function verifyQty(theForm, orderID)
 		<td>
 		<p class="footer"><a class="footer"
 			href="/plants-web/index.html" target="_top">Home</a>&nbsp;&nbsp;:&nbsp;
-		<a class="footer" href="/plants-web/admin.html" target="_top">Admin
+		<a class="footer" href="/plants-web/admin.jsp" target="_top">Admin
 		Home</a>&nbsp;&nbsp;:&nbsp; <a class="footer"
 			href="/plants-web/help.jsp" target="_blank">Help</a></p>
 		</td>
