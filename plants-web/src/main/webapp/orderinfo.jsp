@@ -132,13 +132,13 @@ function verifyPhone(phoneVal)
 	com.emc.plants.pojo.beans.CustomerInfo customerInfo =
       (com.emc.plants.pojo.beans.CustomerInfo)
       session.getAttribute(com.emc.plants.utils.Util.ATTR_CUSTOMER);
-String[] shippingMethods = com.emc.plants.utils.Util.getFullShippingMethodStrings();
+	String[] shippingMethods = com.emc.plants.utils.Util.getFullShippingMethodStrings();
 %>
 
-<form onsubmit="return verifyForm(this);" target="_self" name="billship" method="post" action="/plants-web/servlet/ShoppingServlet?action=orderinfodone">
+<form onsubmit="return verifyForm(this);" target="_self" name="billship" method="get" action="/plants-web/shopping?action=orderinfodone">
 <table border="0" cellpadding="0" cellspacing="5" width="100%">
   <tr>
-    <td><p class="trail"><a class="trail" class="footer" href="/plants-web/promo.jsp" target="work">Home</a> &gt; <a class="trail" class="footer" href="/plants-web/servlet/ShoppingServlet?action=gotocart" target="work">Shopping Cart</a></p></td>
+    <td><p class="trail"><a class="trail" class="footer" href="/plants-web/promo.jsp" target="work">Home</a> &gt; <a class="trail" class="footer" href="/plants-web/shopping?action=gotocart" target="work">Shopping Cart</a></p></td>
   </tr>
   <tr>
     <td width="100%">
@@ -208,6 +208,7 @@ String[] shippingMethods = com.emc.plants.utils.Util.getFullShippingMethodString
 <colgroup>
 <colgroup>
 <tbody>
+
   <tr>
     <td colspan="3">
       <table border="0" cellpadding="5" cellspacing="5">
@@ -401,6 +402,7 @@ String[] shippingMethods = com.emc.plants.utils.Util.getFullShippingMethodString
     <td></td>
     <td>
         <input type="image" alt="Continue" src="/plants-web/images/button_continue.gif"><a href="javascript:verifyForm(this);"></a>
+        <input type="hidden" name="action" value="orderinfodone">
     </td>
   </tr>
 </table></td>
@@ -422,10 +424,10 @@ String[] shippingMethods = com.emc.plants.utils.Util.getFullShippingMethodString
       <img src="/plants-web/images/poweredby_WebSphere.gif" alt="Powered by WebSphere">
     </td>
     <td>
-      <p class="footer"><a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=3" target="work">Accessories</a><br>
+      <p class="footer"><a class="footer" href="/plants-web/shopping?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=3" target="work">Accessories</a><br>
                   <a class="footer" href="/plants-web/index.html" target="_top">Home</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/cart.jsp" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
