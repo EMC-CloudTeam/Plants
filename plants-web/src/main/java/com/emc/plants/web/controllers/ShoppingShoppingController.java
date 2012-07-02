@@ -23,13 +23,11 @@ import com.emc.plants.service.interfaces.ShoppingCart;
 import com.emc.plants.service.interfaces.Suppliers;
 import com.emc.plants.utils.Util;
 
-@Controller
-@RequestMapping("/shopping")
 public class ShoppingShoppingController extends ShoppingController  {
 	
 	public static Logger logger = Logger.getLogger(ShoppingShoppingController.class);
 	
-	@PostConstruct
+	
 	public void init(){
 		this.suppliers = (Suppliers) Util.getSpringBean("suppliersBean");
         this.login = (Login) Util.getSpringBean("login");
@@ -40,7 +38,7 @@ public class ShoppingShoppingController extends ShoppingController  {
        
 	}
 	
-	@RequestMapping(method=RequestMethod.GET)
+	
 	public String performTask(HttpServletRequest req,
 			HttpServletResponse resp){
 		
