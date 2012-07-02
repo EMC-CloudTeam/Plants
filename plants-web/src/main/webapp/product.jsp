@@ -19,6 +19,7 @@ All Rights Reserved * Licensed Materials - Property of IBM
 <script>
 function verifyQty(prodform)
 {
+
 	var result = true;
 	if (isNaN(parseInt(prodform.qty.value)))
 	{
@@ -79,7 +80,7 @@ else
 <table border="0" cellpadding="4" cellspacing="0" width="100%">
   <tr>
     <td class="trail"><p class="trail"><a class="trail" href="/plants-web/promo.jsp" target="work">Home</a> &gt;
-                      <a class="trail" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=<%=inv.getCategory()%>" target="work"><%= categoryName %></a></p></td>
+                      <a class="trail" href="/plants-web/shopping?action=shopping&category=<%=inv.getCategory()%>" target="work"><%= categoryName %></a></p></td>
   </tr>
   <tr>
     <td colspan="5" width="100%">
@@ -101,7 +102,7 @@ else
         </tr>
         <tr>
           <td valign="top">
-            <form onsubmit="return verifyQty(this);" target="_self" name="prodform" method="post" action="/plants-web/servlet/ShoppingServlet">
+            <form onsubmit="return verifyQty(this);" target="_self" name="prodform" method="get" action="/plants-web/shopping">
               <table width="100%" cellpadding="0" cellspacing="0" border="0" >
                 <tr>
                   <td><img src="/plants-web/images/item_selection.jpg" width=73 height=20 alt="Item selection" border="0"><br></td>
@@ -150,12 +151,12 @@ else
       <img src="/plants-web/images/poweredby_WebSphere.gif" alt="Powered by WebSphere">
     </td> 
     <td>
-      <p class="footer"><a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=3" target="work">Accessories</a><br>
+      <p class="footer"><a class="footer" href="/plants-web/shopping?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=3" target="work">Accessories</a><br>
                   <a class="footer" href="/plants-web/index.html" target="_top">Home</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/login.jsp" target="work">Login</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/help.jsp" target="_blank">Help</a></p>

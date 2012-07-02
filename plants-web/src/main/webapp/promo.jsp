@@ -63,17 +63,17 @@ All Rights Reserved * Licensed Materials - Property of IBM
                 <th class="promos" colspan="3" align="left" bgcolor="#669966" width="100%">Specials</th>
               </tr>
               <tr>
-                <td align="center" valign="top" bgcolor="#DCEBCD"><a href="/plants-web/servlet/ShoppingServlet?action=productdetail&itemID=T0003" target ="work">
+                <td align="center" valign="top" bgcolor="#DCEBCD"><a href="/plants-web/shopping?action=productdetail&itemID=T0003" target ="work">
                   <img src="/plants-web/images/trees_bonsai_48.jpg" border="0" width="48" height="48" alt="Bonsai Tree"></a>
-                  <p><a class="promos" href="/plants-web/servlet/ShoppingServlet?action=productdetail&itemID=T0003" target ="work">Bonsai Tree<br>$30.00 each</a></p>
+                  <p><a class="promos" href="/plants-web/shopping?action=productdetail&itemID=T0003" target ="work">Bonsai Tree<br>$30.00 each</a></p>
                 </td>
-                <td align="center" valign="top" bgcolor="#DCEBCD"><a href="/plants-web/servlet/ShoppingServlet?action=productdetail&itemID=V0006" target ="work">
+                <td align="center" valign="top" bgcolor="#DCEBCD"><a href="/plants-web/shopping?action=productdetail&itemID=V0006" target ="work">
                   <img src="/plants-web/images/veggies_strawberries_48.jpg" border="0" width="48" height="48" alt="Red Delicious Strawberries"></a>
-                  <p><a class="promos" href="/plants-web/servlet/ShoppingServlet?action=productdetail&itemID=V0006" target ="work">Red Delicious Strawberries<br>$3.50 (50 seeds)</a></p>
+                  <p><a class="promos" href="/plants-web/shopping?action=productdetail&itemID=V0006" target ="work">Red Delicious Strawberries<br>$3.50 (50 seeds)</a></p>
                 </td>
-                <td align="center" valign="top" bgcolor="#DCEBCD"><a href="/plants-web/servlet/ShoppingServlet?action=productdetail&itemID=F0017" target ="work">
+                <td align="center" valign="top" bgcolor="#DCEBCD"><a href="/plants-web/shopping?action=productdetail&itemID=F0017" target ="work">
                   <img src="/plants-web/images/flower_tulips_48.jpg" border="0" width="48" height="48" alt="Tulips"></a>
-                  <p><a class="promos" href="/plants-web/servlet/ShoppingServlet?action=productdetail&itemID=F0017" target ="work">Tulips<br>$17.00 (10 bulbs)</a></p>
+                  <p><a class="promos" href="/plants-web/shopping?action=productdetail&itemID=F0017" target ="work">Tulips<br>$17.00 (10 bulbs)</a></p>
                 </td>
               </tr>
             </table>
@@ -87,15 +87,15 @@ All Rights Reserved * Licensed Materials - Property of IBM
 <table border="0" cellpadding="5" cellspacing="0" width="100%">
   <tr>
     <td>
-      <img src="/plants-web/images/poweredby_WebSphere.gif" alt="Powered by WebSphere">
+      <img src="/plants-web/images/poweredby_WebSphere.gif" alt="Powered by Springsource">
     </td>
     <td>
-      <p class="footer"><a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=3" target="work">Accessories</a><br>
+      <p class="footer"><a class="footer" href="/plants-web/shopping?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=3" target="work">Accessories</a><br>
                   <a class="footer" href="index.html" target="_top">Home</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/login.jsp" target="work">Login</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/help.jsp" target="_blank">Help</a></p>

@@ -11,6 +11,7 @@ All Rights Reserved * Licensed Materials - Property of IBM
 <head>
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
 <meta name="DC.LANGUAGE" scheme="rfc1766"/>
 
 <link href="/plants-web/PlantMaster.css" rel="stylesheet" type="text/css"/>
@@ -55,15 +56,15 @@ All Rights Reserved * Licensed Materials - Property of IBM
 <table border="0" cellpadding="5" cellspacing="0" width="100%">
   <tr>
     <td>
-      <img src="/plants-web/images/poweredby_WebSphere.gif" alt="Powered by WebSphere">
+      <img src="/plants-web/images/poweredby_WebSphere.gif" alt="Powered by Springsource">
     </td> 
     <td>
-      <p class="footer"><a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=3" target="work">Accessories</a><br>
+      <p class="footer"><a class="footer" href="/plants-web/shopping?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=3" target="work">Accessories</a><br>
                   <a class="footer" href="/plants-web/index.html" target="_top">Home</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/login.jsp" target="work">Login</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/help.jsp" target="_blank">Help</a></p>

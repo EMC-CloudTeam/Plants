@@ -36,7 +36,7 @@ function verifyForm()
 
 function verifyQty(qtyfield)
 {
-    var result = true;
+	var result = true;
     if (isNaN(parseInt(qtyfield.value)))
     {
         result = false;
@@ -80,8 +80,8 @@ if (shoppingCart != null)
 }
 %>
              
-<!--<FORM method="post" action="main.asp">-->
-<form onsubmit="return verifyForm();" target="_self" name="cartform" method="post" action="/plants-web/servlet/ShoppingServlet">
+<!--<FORM method="get" action="main.asp">-->
+<form onsubmit="return verifyForm();" target="_self" name="cartform" method="get" action="/plants-web/shopping	">
 <table border="0" cellpadding="4" cellspacing="0" width="100%">
   <tr>
     <td class="trail"><p class="trail"><a class="trail" class="footer" href="/plants-web/promo.jsp" target="work">Home</a></p></td>
@@ -165,7 +165,7 @@ if (shoppingCart != null)
                 <table cellpadding="0" cellspacing="0" border="0">
                   <tr>
                     <td nowrap>
-                      <a href="/plants-web/servlet/ShoppingServlet?action=shopping" target="work">
+                      <a href="/plants-web/shopping?action=shopping" target="work">
                       <img src="/plants-web/images/button_continue_shopping.gif" alt="Continue Shopping" width="113" height="27" border="0"></a>
                     </td>
 <%if (cartitems != null)
@@ -176,7 +176,7 @@ if (shoppingCart != null)
                         <input type="hidden" name="action" value="updatequantity">
                     </td>
                     <td>
-                      <a href="/plants-web/servlet/ShoppingServlet?action=initcheckout" target="work">
+                      <a href="/plants-web/shopping?action=initcheckout" target="work">
                       <img src="/plants-web/images/button_checkout_now.gif" alt="Checkout Now" width="95" height="27" border="0"></a>
                     </td>
 <%
@@ -205,12 +205,12 @@ if (shoppingCart != null)
       <img src="/plants-web/images/poweredby_WebSphere.gif" alt="Powered by WebSphere">
     </td> 
     <td>
-      <p class="footer"><a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=3" target="work">Accessories</a><br>
+      <p class="footer"><a class="footer" href="/plants-web/shopping?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=3" target="work">Accessories</a><br>
                   <a class="footer" href="/plants-web/index.html" target="_top">Home</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/login.jsp" target="work">Login</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/help.jsp" target="_blank">Help</a></p>

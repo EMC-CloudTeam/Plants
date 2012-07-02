@@ -28,14 +28,14 @@ All Rights Reserved * Licensed Materials - Property of IBM
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr>
         <td background="images/tabs_background.jpg"><img border="0" src="images/1x1_trans.gif" width="10" height="21" alt=""></td>
-        <td><a href="/plants-web/admin/shopping?action=shopping&category=0" OnClick="top.selectMenu('menu1'); return true" target="work"><img name="menu1" src=images/tab_flowers_u.gif border="0" width="75" height="35" alt="Flowers"></a></td>
-        <td><a href="/plants-web/admin/shopping?action=shopping&category=1" OnClick="top.selectMenu('menu2'); return true" target="work"><img name="menu2" src=images/tab_veggies_u.gif border="0" width="136" height="35" alt="Fruits and Vegetables"></a></td>
-        <td><a href="/plants-web/admin/shopping?action=shopping&category=2" OnClick="top.selectMenu('menu3'); return true" target="work"><img name="menu3" src=images/tab_trees_u.gif border="0" width="57" height="35" alt="Trees"></a></td>
-        <td><a href="/plants-web/admin/shopping?action=shopping&category=3" OnClick="top.selectMenu('menu4'); return true" target="work"><img name="menu4" src=images/tab_accessories_u.gif border="0" width="92" height="35" alt="Accessories"></a></td>
+        <td><a href="/plants-web/shopping?action=shopping&category=0" OnClick="top.selectMenu('menu1'); return true" target="work"><img name="menu1" src=images/tab_flowers_u.gif border="0" width="75" height="35" alt="Flowers"></a></td>
+        <td><a href="/plants-web/shopping?action=shopping&category=1" OnClick="top.selectMenu('menu2'); return true" target="work"><img name="menu2" src=images/tab_veggies_u.gif border="0" width="136" height="35" alt="Fruits and Vegetables"></a></td>
+        <td><a href="/plants-web/shopping?action=shopping&category=2" OnClick="top.selectMenu('menu3'); return true" target="work"><img name="menu3" src=images/tab_trees_u.gif border="0" width="57" height="35" alt="Trees"></a></td>
+        <td><a href="/plants-web/shopping?action=shopping&category=3" OnClick="top.selectMenu('menu4'); return true" target="work"><img name="menu4" src=images/tab_accessories_u.gif border="0" width="92" height="35" alt="Accessories"></a></td>
         <td width="100%" background="images/tabs_background.jpg">&nbsp;</td>
         <td align="right" background="images/tabs_background.jpg" nowrap>
           <p class="global"><a class="global" href="index.html" target="_top">HOME</a>&nbsp;&nbsp;:&nbsp;
-          <a class="global" href="/plants-web/admin/shopping?action=gotocart" target="work">SHOPPING CART</a>&nbsp;&nbsp;:&nbsp;
+          <a class="global" href="/plants-web/shopping?action=gotocart" target="work">SHOPPING CART</a>&nbsp;&nbsp;:&nbsp;
           <a class="global" href="/plants-web/login.jsp" target="work">LOGIN</a>&nbsp;&nbsp;:&nbsp;
           <a class="global" href="/plants-web/help.jsp" target="_blank">HELP</a>&nbsp;&nbsp;</p></td>
       </tr>

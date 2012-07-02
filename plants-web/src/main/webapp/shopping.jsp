@@ -17,7 +17,7 @@ All Rights Reserved * Licensed Materials - Property of IBM
 <%
 	int count = 0; 
 
-java.util.List invitems = (java.util.List) 
+java.util.List invitems = (java.util.List)
       request.getAttribute(com.emc.plants.utils.Util.ATTR_INVITEMS);
       System.out.println(invitems.size());
 com.emc.plants.persistence.Inventory inv = 
@@ -25,7 +25,7 @@ com.emc.plants.persistence.Inventory inv =
 
 String categoryName = com.emc.plants.utils.Util.getCategoryString(inv.getCategory());  
 
-String productID = "/plants-web/servlet/ShoppingServlet?action=productdetail&itemID=" + inv.getInventoryId();
+String productID = "/plants-web/shopping?action=productdetail&itemID=" + inv.getInventoryId();
 
 //based on the categoryName, select the correct menu item to highlight
 
@@ -73,7 +73,7 @@ while (count < invitems.size())
 {
    inv = (com.emc.plants.persistence.Inventory) (invitems.get(count));
    categoryName = com.emc.plants.utils.Util.getCategoryString(inv.getCategory());  
-   productID = "/plants-web/servlet/ShoppingServlet?action=productdetail&itemID=" + inv.getInventoryId();
+   productID = "/plants-web/shopping?action=productdetail&itemID=" + inv.getInventoryId();
 %>
 
 
@@ -117,12 +117,12 @@ while (count < invitems.size())
       <img src="/plants-web/images/poweredby_WebSphere.gif" alt="Powered by WebSphere">
     </td> 
     <td>
-      <p class="footer"><a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=shopping&category=3" target="work">Accessories</a><br>
+      <p class="footer"><a class="footer" href="/plants-web/shopping?action=shopping&category=0" target="work">Flowers</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=1" target="work">Fruits &amp; Vegetables</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=2" target="work">Trees</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=shopping&category=3" target="work">Accessories</a><br>
                   <a class="footer" href="/plants-web/index.html" target="_top">Home</a>&nbsp;&nbsp;:&nbsp;
-                  <a class="footer" href="/plants-web/servlet/ShoppingServlet?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
+                  <a class="footer" href="/plants-web/shopping?action=gotocart" target="work">Shopping Cart</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/account" target="work">My Account</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/login.jsp" target="work">Login</a>&nbsp;&nbsp;:&nbsp;
                   <a class="footer" href="/plants-web/help.jsp" target="_blank">Help</a></p>
