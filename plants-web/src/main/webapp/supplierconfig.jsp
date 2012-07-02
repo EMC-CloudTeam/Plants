@@ -141,7 +141,7 @@ if (supplierInfo != null) {
 			<br>
 			<form onsubmit="return verifyForm(this);" target="_self"
 				name="supplier" action="/plants-web/admin"
-				method="post">
+				method="get">
 			<table border="0" cellpadding="0" cellspacing="0">
 				<caption>Enter the Supplier's Configuration Information</caption>
 				<colgroup class="label">
