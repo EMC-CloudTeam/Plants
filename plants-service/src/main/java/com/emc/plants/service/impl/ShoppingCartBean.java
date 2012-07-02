@@ -17,8 +17,10 @@ import javax.persistence.PersistenceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Repository;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.emc.plants.persistence.BackOrder;
 import com.emc.plants.persistence.Customer;
@@ -36,12 +38,11 @@ import com.emc.plants.utils.Util;
  * EJB.  ShoppingCartBean implements each of the business methods in the <code>ShoppingCart</code>
  * EJB local interface and each of the EJB lifecycle methods in the javax.ejb.SessionBean
  * interface.
- * 
  * @see ShoppingCart
  */
 //@Stateful(name="ShoppingCart")
-@Repository("shopping")
-@Scope(value="session")
+@Component("shopping")
+@Scope(value=WebApplicationContext.SCOPE_SESSION, proxyMode=ScopedProxyMode.TARGET_CLASS)
 @Transactional
 public class ShoppingCartBean implements ShoppingCart
 {
