@@ -14,6 +14,6 @@ public class Main {
 		System.out.println("RabbitTemplate :: "  + context1.getBean("rabbitTemplate"));
 		PaymentInfoPublisher pInfoPublisher = (PaymentInfoPublisher)context1.getBean("paymentInfoPublisher");
 		
-		pInfoPublisher.publishMessage("Hi.. This is a test message!");
+		pInfoPublisher.publishMessage("Publishing test message: This is a test message!");
 	} 
 }
