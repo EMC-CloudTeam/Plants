@@ -23,7 +23,8 @@ import javax.persistence.Table;
  * @see Customer
  */
 @Entity(name="Customer")
-@Table(name="CUSTOMER", schema="APP")
+//@Table(name="CUSTOMER", schema="APP")
+@Table(name="CUSTOMER", schema="ADMIN")
 @NamedQueries({
 	@NamedQuery(
 		name="removeAllCustomers",

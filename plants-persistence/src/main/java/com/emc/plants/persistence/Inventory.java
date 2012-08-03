@@ -13,6 +13,7 @@ package com.emc.plants.persistence;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -30,7 +31,8 @@ import com.emc.plants.utils.Util;
  * @see Inventory
  */
 @Entity(name="Inventory")
-@Table(name="INVENTORY", schema="APP")
+//@Table(name="INVENTORY", schema="APP")
+@Table(name="INVENTORY", schema="ADMIN")
 @NamedQueries({
 	@NamedQuery(
 		name="getItemsByCategory",
@@ -54,6 +56,7 @@ public class Inventory implements java.io.Serializable
 	private String description;
 	private String pkginfo;
 	private String image;
+	@Lob
 	private byte[] imgbytes;
 	private float price;
 	private float cost;

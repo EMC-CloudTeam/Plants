@@ -10,13 +10,14 @@ import javax.persistence.TableGenerator;
 
 
 @Entity(name="PAYMNT_PROC_MSG")
-@Table(name="PAYMNT_PROC_MSG", schema="APP")
+//@Table(name="PAYMNT_PROC_MSG", schema="APP")
+@Table(name="PAYMNT_PROC_MSG", schema="ADMIN")
 public class PaymentProcessMessage {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE,generator="PaymntProcMsgSeq")
 	@TableGenerator(name="PaymntProcMsgSeq", table="IDGENERATOR", pkColumnName="IDNAME", 
-			pkColumnValue="PAYMNTPROCMSG", valueColumnName="IDVALUE", schema="APP")
+			pkColumnValue="PAYMNTPROCMSG", valueColumnName="IDVALUE", schema="ADMIN")
 	@Column(name="idPAYMNT_PROC_MSG")
 	private long idPaymntProcMsg;
 	

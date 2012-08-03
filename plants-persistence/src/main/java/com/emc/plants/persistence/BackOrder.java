@@ -24,7 +24,8 @@ import com.emc.plants.utils.Util;
  * Bean implementation class for Enterprise Bean: BackOrder
  */
 @Entity(name="BackOrder") 
-@Table(name="BACKORDER", schema="APP") 
+//@Table(name="BACKORDER", schema="APP")
+@Table(name="BACKORDER", schema="ADMIN")
 @NamedQueries({
 	@NamedQuery(
 		name="findAllBackOrders",
@@ -41,7 +42,7 @@ public class BackOrder
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE, generator="BackOrderSeq")
 	@TableGenerator(name="BackOrderSeq", table="IDGENERATOR", pkColumnName="IDNAME", 
-			pkColumnValue="BACKORDER", valueColumnName="IDVALUE",schema = "APP")
+			pkColumnValue="BACKORDER", valueColumnName="IDVALUE",schema = "ADMIN")
 	private long backOrderID;
 	private int quantity;
 	private String status;
