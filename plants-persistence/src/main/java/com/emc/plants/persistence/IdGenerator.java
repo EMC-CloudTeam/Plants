@@ -10,7 +10,8 @@ import javax.persistence.Table;
  * Bean implementation class for Enterprise Bean: IdGenerator
  */
 @Entity(name="IdGenerator")
-@Table(name="IDGENERATOR", schema="APP")
+//@Table(name="IDGENERATOR", schema="APP")
+@Table(name="IDGENERATOR", schema="ADMIN")
 @NamedQueries({
 	@NamedQuery(
 		name="removeAllIdGenerator",

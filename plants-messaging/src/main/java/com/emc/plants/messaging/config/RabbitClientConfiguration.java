@@ -6,7 +6,6 @@ package com.emc.plants.messaging.config;
 
 import org.apache.log4j.Logger;
 import org.springframework.amqp.core.AmqpAdmin;
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;

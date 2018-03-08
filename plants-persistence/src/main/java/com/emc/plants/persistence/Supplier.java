@@ -17,7 +17,8 @@ import javax.persistence.Table;
  * Bean implementation class for Enterprise Bean: Supplier
  */
 @Entity(name="Supplier")
-@Table(name="SUPPLIER", schema="APP")
+//@Table(name="SUPPLIER", schema="APP")
+@Table(name="SUPPLIER", schema="ADMIN")
 @NamedQueries({
 	@NamedQuery(
 			name="findAllSuppliers",

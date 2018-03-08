@@ -13,7 +13,8 @@
 	  <module>plants-messaging</module>
 	</modules>
 	<properties>
-		<skipTests>true</skipTests>
+		<skipTests>false</skipTests>
+
 		<env>prod</env>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.6</java.version>

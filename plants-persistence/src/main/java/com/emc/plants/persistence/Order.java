@@ -21,7 +21,8 @@ import com.emc.plants.utils.Util;
  * Bean implementation class for Enterprise Bean: Order
  */
 @Entity(name="Order")
-@Table(name="ORDER1", schema="APP")
+//@Table(name="ORDER1", schema="APP")
+@Table(name="ORDER1", schema="ADMIN")
 @NamedQueries({
 	@NamedQuery(
 		name="removeAllOrders",
@@ -36,7 +37,7 @@ public class Order
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE,generator="OrderSeq")
 	@TableGenerator(name="OrderSeq", table="IDGENERATOR", pkColumnName="IDNAME", 
-			pkColumnValue="ORDER", valueColumnName="IDVALUE", schema="APP")
+			pkColumnValue="ORDER", valueColumnName="IDVALUE", schema="ADMIN")
 	private long orderID;
 	private String sellDate;
 	private String billName;

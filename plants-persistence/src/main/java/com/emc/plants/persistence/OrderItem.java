@@ -24,7 +24,8 @@ import com.emc.plants.utils.Util;
  * Bean implementation class for Enterprise Bean: OrderItem
  */
 @Entity(name="OrderItem")
-@Table(name="ORDERITEM", schema="APP")
+//@Table(name="ORDERITEM", schema="APP")
+@Table(name="ORDERITEM", schema="ADMIN")
 @NamedQueries({
 	@NamedQuery(
 		name="removeAllOrderItem",

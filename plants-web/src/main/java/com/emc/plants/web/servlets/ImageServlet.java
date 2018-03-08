@@ -19,8 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.emc.plants.service.interfaces.Catalog;
 import com.emc.plants.utils.Util;
 
